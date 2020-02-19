@@ -1,7 +1,8 @@
-package com.cybercrypt.sandvmi;
+package com.cybercrypt.sandvmi.ui;
 
 import android.os.Bundle;
 
+import com.cybercrypt.sandvmi.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
