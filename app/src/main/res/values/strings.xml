@@ -1,4 +1,5 @@
 <resources>
+    <!-- App Strings -->
     <string name="app_name">SandVMI</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -6,7 +7,11 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="intro_App_title">Sand</string>
+    <string name="intro_App_text">Secure, fffshore, virtual mobile</string>
 
+
+    <!-- Home Screen Strings -->
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -14,7 +19,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
-
+    <!-- Splash Screen Strings -->
     <string name="splash4_title">Multiple device in one</string>
     <string name="splash4_content">No need to carry different devices. Access multiple virtual phones from 1 device. Wipe and reset them whenever you want.</string>
     <string name="splash3_title">Anonymity</string>
@@ -26,4 +31,19 @@
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="getstart">Get Started</string>
+
+
+    <!-- Subscription Screen Strings -->
+
+    <!-- Subscription Home Screen Strings -->
+    <string name="subscription_home_title">Start a subscription</string>
+    <string name="subscription_home_item_1">Leave no trace of data on your device.</string>
+    <string name="subscription_home_item_2">Multi factor encryption.</string>
+    <string name="subscription_home_item_3">Keep your files, messages and online activity offshore, encrypted and anonymous.</string>
+    <string name="subscription_home_button_text">Subscribe now</string>
+    <string name="subscription_home_link"><u>or try free for 7 days</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

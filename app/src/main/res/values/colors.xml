@@ -4,11 +4,14 @@
     <color name="Theme1colorPrimaryDark">#00574B</color>
     <color name="Theme1colorAccent">#D81B60</color>
 
-    <color name="bg_screen">#F4F4F6</color>
+    <color name="bg_screen">#182742</color>
     <color name="dot_light_screen">#E4E4E5</color>
-    <color name="dot_dark_screen">#ABABB4</color>
-    <color name="splash_button">#ABABB4</color>
-    <color name="skip_color">#ABABB4</color>
+    <color name="dot_dark_screen">#5FB1F1</color>
+    <color name="splash_button">#454CB8</color>
+    <color name="skip_color">#DDE0E3</color>
+
+    <color name="primary_text_color">#F7F8FA</color>
+    <color name="secondary_text_color">#DDE0E3</color>
 
 
 

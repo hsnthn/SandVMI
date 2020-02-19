@@ -7,4 +7,21 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="dots_height">30dp</dimen>
     <dimen name="dots_margin_bottom">200dp</dimen>
+
+    <!-- Text Dimensions -->
+    <dimen name="default_title_size">18sp</dimen>
+    <dimen name="default_text_size">14sp</dimen>
+
+    <dimen name="splash_title_size">24sp</dimen>
+    <dimen name="splash_text_size">16sp</dimen>
+
+
+    <dimen name="intro_slide_title">20sp</dimen>
+    <dimen name="intro_slide_text">16sp</dimen>
+
+    <dimen name="subscription_title">20sp</dimen>
+    <dimen name="subscription_text">16sp</dimen>
+
+
+
 </resources>
