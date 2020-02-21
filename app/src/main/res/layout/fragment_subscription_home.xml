@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/bg_screen"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_above="@+id/btn_subcribe"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/subscription_home_title"
+        android:fontFamily="@font/varela_round_regular"
+        android:textStyle="bold"
+        android:textSize="@dimen/subscription_title"
+        android:textColor="@color/primary_text_color"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="25dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_home_item_1"
+        android:drawableLeft="@drawable/ic_subscription_check"
+        android:textSize="@dimen/subscription_text"
+        android:layout_marginLeft="20dp"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_subscription_check"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/secondary_text_color"
+        android:layout_marginBottom="25dp"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_home_item_2"
+        android:drawableLeft="@drawable/ic_subscription_check"
+        android:textSize="@dimen/subscription_text"
+        android:layout_marginLeft="20dp"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/secondary_text_color"
+        android:drawableStart="@drawable/ic_subscription_check"
+        android:layout_marginBottom="25dp"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_home_item_3"
+        android:drawableLeft="@drawable/ic_subscription_check"
+        android:textSize="@dimen/subscription_text"
+        android:layout_marginLeft="20dp"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/secondary_text_color"
+        android:drawableStart="@drawable/ic_subscription_check"
+        android:layout_marginStart="20dp" />
+
+
+</LinearLayout>
+
+    <Button
+        android:layout_above="@+id/link_skip"
+        android:id="@+id/btn_subcribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_home_button_text"
+        android:background="@drawable/oval_button"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="20dp"/>
+
+
+    <TextView
+        android:id="@+id/link_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="@string/subscription_home_link"
+        android:textColor="@color/secondary_text_color"
+        android:textStyle="bold"
+        android:textSize="@dimen/default_text_size"
+        android:layout_marginBottom="20dp"
+        />
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.cybercrypt.sandvmi.ui.send;
+package com.cybercrypt.sandvmi.ui.homescreen.send;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
