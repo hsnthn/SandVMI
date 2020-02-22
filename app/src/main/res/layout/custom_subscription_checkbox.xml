@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:background="@drawable/ic_check_subscription_not_selected"
+    android:layout_height="57dp">
+
+    <CheckBox
+        android:id="@+id/check_subscriptipn_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@android:color/white"
+        />
+
+    <TextView
+        android:id="@+id/text_subscription_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:layout_alignBaseline="@+id/check_subscriptipn_menu"
+        android:textColor="@color/subscription_hint_color"
+        />
+</RelativeLayout>

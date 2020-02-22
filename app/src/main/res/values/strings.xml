@@ -8,7 +8,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="intro_App_title">Sand</string>
-    <string name="intro_App_text">Secure, fffshore, virtual mobile</string>
+    <string name="intro_App_text">Secure, offshore, virtual mobile</string>
 
 
     <!-- Home Screen Strings -->
@@ -42,6 +42,17 @@
     <string name="subscription_home_item_3">Keep your files, messages and online activity offshore, encrypted and anonymous.</string>
     <string name="subscription_home_button_text">Subscribe now</string>
     <string name="subscription_home_link"><u>or try free for 7 days</u></string>
+
+    <!-- Subscription Home Screen Strings -->
+    <string name="subscription_choose_plan_title">Subscription</string>
+    <string name="subscription_confirmation_title">Confirmation</string>
+    <string name="subscription_payment_details_title">Payment Options</string>
+    <string name="subscription_choose_plan_text">Restore a purchase</string>
+    <string name="subscription_choose_plan_check_1">£15/month</string>
+    <string name="subscription_choose_plan_check_2">£130/year</string>
+    <string name="subscription_choose_plan_check_hint">7 day free trial</string>
+    <string name="subscription_continue">Continue</string>
+    <string name="subscription_choose_plan_sub_title">Choose a plan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

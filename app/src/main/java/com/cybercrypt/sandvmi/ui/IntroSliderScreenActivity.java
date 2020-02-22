@@ -109,7 +109,7 @@ public class IntroSliderScreenActivity extends Activity {
     }
 
     private void launchHomeScreen() {
-        startActivity(new Intent(IntroSliderScreenActivity.this, MainActivity.class));
+        startActivity(new Intent(IntroSliderScreenActivity.this, HomeActivity.class));
         finish();
     }
 

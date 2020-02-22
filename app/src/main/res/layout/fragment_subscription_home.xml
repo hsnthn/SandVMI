@@ -90,6 +90,7 @@
         android:textStyle="bold"
         android:textSize="@dimen/default_text_size"
         android:layout_marginBottom="20dp"
-        />
+        android:clickable="true"
+        android:focusable="true" />
 
 </RelativeLayout>

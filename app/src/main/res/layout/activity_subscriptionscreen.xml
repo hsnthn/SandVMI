@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <!-- a frame layout for replace in full-->
     <FrameLayout
         android:id="@+id/fragment_place"
