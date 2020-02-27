@@ -12,6 +12,7 @@ public class BaseFragment extends Fragment {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_place,fra)
+                .addToBackStack(null)
                 .commit();
     }
 

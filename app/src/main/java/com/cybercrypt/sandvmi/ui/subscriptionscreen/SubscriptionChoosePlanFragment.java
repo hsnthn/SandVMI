@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
-import com.cybercrypt.sandvmi.ui.util.PaymentPlan;
 
 public class SubscriptionChoosePlanFragment extends BaseFragment {
 
@@ -39,7 +38,7 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
         final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_subs);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_nav_back));
         final TextView page_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        page_title.setText(getResources().getString(R.string.subscription_payment_details_title));
+        page_title.setText(getResources().getString(R.string.subscription_choose_plan_title));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +61,8 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
                     chk_2_bg.setBackground(getResources().getDrawable(R.drawable.ic_check_sub_plan_unselected));
                     chk_sub_plan_2.setChecked(false);
                     enableButton();
+                    chk_sub_plan_1.setEnabled(false);
+                    chk_sub_plan_2.setEnabled(true);
                 }
             }
         });
@@ -74,6 +75,8 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
                     chk_1_bg.setBackground(getResources().getDrawable(R.drawable.ic_check_sub_plan_unselected));
                     chk_sub_plan_1.setChecked(false);
                     enableButton();
+                    chk_sub_plan_2.setEnabled(false);
+                    chk_sub_plan_1.setEnabled(true);
                 }
             }
         });
@@ -83,13 +86,7 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
         btn_paymentMethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PaymentPlan paymentPlan;
-                if (chk_1_bg.isSelected()){
-                    paymentPlan=PaymentPlan.MONTH;
-                }else{
-                    paymentPlan=PaymentPlan.ANUAL;
-                }
-                changeFragment(SubscriptionChoosePaymentPlanFragment.newInstance(paymentPlan));
+                changeFragment(SubscriptionChoosePaymentPlanFragment.newInstance());
             }
         });
 

@@ -12,4 +12,92 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        android:layout_above="@+id/subsc_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/varela_round_regular"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/subscription_choose_plan_sub_title" />
+
+
+    <RelativeLayout
+        android:layout_above="@+id/subsc_2"
+        android:id="@+id/subsc_1"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_check_sub_plan_unselected"
+        android:layout_height="57dp">
+
+        <CheckBox
+            android:id="@+id/check_subscriptipn_payment_method_1"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:button="@drawable/subscription_checkboxs"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/subscription_payment_method_check_1"
+            android:textColor="@android:color/white"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:paddingStart="10dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_above="@+id/btn_continue"
+        android:id="@+id/subsc_2"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_check_sub_plan_unselected"
+        android:layout_height="57dp">
+
+        <CheckBox
+            android:id="@+id/check_subscriptipn_payment_method_2"
+            android:button="@drawable/subscription_checkboxs"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@android:color/white"
+            android:paddingLeft="10dp"
+            android:text="@string/subscription_payment_method_check_2"
+            android:layout_marginStart="10dp"
+            android:paddingStart="10dp" />
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_continue"
+        android:background="@drawable/oval_button_disabled"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"/>
+
+
+
 </RelativeLayout>

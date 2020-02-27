@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/bg_screen"
+    android:paddingTop="25dp"
+    android:layout_height="match_parent"
+>
+
+    <include
+        layout="@layout/toolbar_subscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_crypto_text_1"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_regular"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#0D0E31"
+            android:hint="@string/subscription_crypto_edit1_hint"
+            android:textColorHint="#ABABB6"
+            android:padding="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/subscription_crypto_text_1"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#0D0E31"
+            android:hint="@string/subscription_crypto_edit1_hint"
+            android:textColorHint="#ABABB6"
+            android:padding="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
