@@ -46,7 +46,6 @@
     <!-- Subscription Home Screen Strings -->
     <string name="subscription_choose_plan_title">Subscription</string>
     <string name="subscription_confirmation_title">Confirmation</string>
-    <string name="subscription_payment_details_title">Payment Options</string>
     <string name="subscription_choose_plan_text">Restore a purchase</string>
     <string name="subscription_choose_plan_check_1">£15/month</string>
     <string name="subscription_choose_plan_check_2">£130/year</string>
@@ -56,5 +55,54 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="subscription_choose_payment_plan_title">Payment options</string>
+    <string name="subscription_payment_method_check_1">Credit/Debit Card</string>
+    <string name="subscription_payment_method_check_2">Cryptocurrency</string>
+    <string name="subscription_crypto_text_1">Entered</string>
+    <string name="subscription_crypto_edit1_hint">Card number...</string>
+    <string name="subscription_credit_text_1">Active</string>
+    <string name="subscription_credit_text_2">Name</string>
+    <string name="subscription_credit_edit2_hint">Enter name</string>
+    <string name="subscription_credit_edit1_hint">Card number...</string>
+    <string name="number_one">1</string>
+    <string name="number_two">2</string>
+    <string name="number_three">3</string>
+    <string name="number_four">4</string>
+    <string name="number_five">5</string>
+    <string name="number_six">6</string>
+    <string name="number_seven">7</string>
+    <string name="number_eight">8</string>
+    <string name="number_nine">9</string>
+    <string name="number_zero">0</string>
+    <string name="subscription_buy_now">Buy Now</string>
+    <string name="subscription_credit_text_3">Expired</string>
+    <string name="subscription_credit_edit3_hint">CVV...</string>
+    <string name="subscription_credit_text_4">Security Code</string>
+    <string name="welcome_text">Welcome</string>
+    <string name="confirmation_btn_text">Enter Sand Home</string>
 
-</resources>
+
+    <string-array name="months_array">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="years_array">
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+    </string-array>
+
+    </resources>

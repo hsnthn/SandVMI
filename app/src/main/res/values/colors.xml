@@ -14,6 +14,11 @@
     <color name="primary_text_color">#F7F8FA</color>
     <color name="secondary_text_color">#DDE0E3</color>
     <color name="subscription_hint_color">#383050</color>
+    <color name="edit_cursor_color">#6E52C3</color>
+
+
+    <color name="forms_background">#0D0E31</color>
+    <color name="form_item_background">#13154E</color>
 
 
     <array name="array_dot_active">
@@ -30,4 +35,7 @@
         <item>@color/dot_light_screen</item>
         <item>@color/dot_light_screen</item>
     </array>
+
+
+
 </resources>

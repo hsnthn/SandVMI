@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+
+        <layer-list>
+
+            <item>
+                <shape>
+
+                    <solid android:color="#0D0E31"/>
+                    <size android:height="48dp"/>
+                    <corners android:radius="4dp" />
+                    <size android:width="65dp" />
+                </shape>
+            </item>
+
+            <item
+                android:left="5dp"
+                android:right="7dp"
+                >
+
+                <bitmap android:gravity="center_vertical|right"  android:src="@drawable/ic_credit_card_spinner" />
+
+            </item>
+
+        </layer-list>
+
+    </item>
+
+</selector>

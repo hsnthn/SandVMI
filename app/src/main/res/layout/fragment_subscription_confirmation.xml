@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lay_credit_card"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/bg_screen"
+    android:paddingTop="25dp"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <include
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbar_subs"
+        layout="@layout/toolbar_subscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<ImageView
+    android:id="@+id/img_welcome"
+    android:layout_marginTop="120dp"
+    android:layout_below="@+id/toolbar_subs"
+    android:layout_centerHorizontal="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_confirmation"/>
+
+    <TextView
+        android:id="@+id/confirmation_txt_title"
+        android:gravity="center"
+        android:layout_below="@id/img_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/varela_round_regular"
+        android:text="@string/welcome_text"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/big_title_size"
+        />
+
+    <TextView
+        android:id="@+id/confirmation_txt_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirmation_txt_title"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/medium_text_size"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        />
+
+    <Button
+        android:id="@+id/btn_enter_sand_home"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/confirmation_txt_1"
+        style="@style/ButtonStyle"
+        android:layout_gravity="center"
+        android:text="@string/confirmation_btn_text"
+        android:layout_marginTop="15dp"
+        />
+
+
+
+
+</RelativeLayout>
