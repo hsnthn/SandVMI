@@ -57,6 +57,7 @@ public class SubscriptionHomeFragment extends BaseFragment {
     private void launchHome(){
         Intent homeIntenet = new Intent(getActivity(), HomeActivity.class);
         startActivity(homeIntenet);
+        getActivity().finish();
 
     }
 

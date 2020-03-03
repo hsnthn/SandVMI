@@ -41,19 +41,68 @@
         <item name="android:tag">number_button</item>
     </style>
 
-
+    <!-- subscription payment texts -->
     <style name="TextViewStyle" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
-
     </style>
+
+    <style name="TitleTextViewStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#F7F8FA</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:fontFamily">@font/varela_round_regular</item>
+        <item name="android:textSize">@dimen/big_title_size</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="LightTextViewStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/secondary_text_color</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:fontFamily">@font/roboto_ligth</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+
+    <style name="ActionBoldTextViewStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/secondary_text_color</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="ActionNormalTextViewStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/secondary_text_color</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
 
     <style name="EditTextStyle" parent="@android:style/Widget.EditText">
         <item name="android:background">@drawable/edit_subscription</item>
@@ -72,10 +121,21 @@
     <style name="ButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/oval_button</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_height">56dp</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/medium_text_size</item>
+
+    </style>
+
+    <style name="ButtonStyleDisabled" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/oval_button_disabled</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+
     </style>
 
 

@@ -9,11 +9,10 @@
     <color name="dot_dark_screen">#5FB1F1</color>
     <color name="splash_button">#454CB8</color>
     <color name="splash_button_disabled">#546170</color>
-    <color name="skip_color">#DDE0E3</color>
 
     <color name="primary_text_color">#F7F8FA</color>
     <color name="secondary_text_color">#DDE0E3</color>
-    <color name="subscription_hint_color">#383050</color>
+    <color name="subscription_hint_color">#40FFFFFF</color>
     <color name="edit_cursor_color">#6E52C3</color>
 
 
