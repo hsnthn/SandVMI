@@ -38,6 +38,7 @@ public class SubscriptionChoosePaymentPlanFragment extends BaseFragment {
 
         final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_subs);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_nav_back));
+
         final TextView page_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
         page_title.setText(getResources().getString(R.string.subscription_choose_payment_plan_title));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

@@ -13,6 +13,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -42,16 +46,13 @@
     </style>
 
     <!-- subscription payment texts -->
-    <style name="TextViewStyle" parent="@android:style/Widget.TextView">
+    <style name="NormalTextViewStyle" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/small_text_size</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+
     </style>
 
     <style name="TitleTextViewStyle" parent="@android:style/Widget.TextView">
@@ -60,10 +61,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">@font/varela_round_regular</item>
         <item name="android:textSize">@dimen/big_title_size</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+
     </style>
 
     <style name="LightTextViewStyle" parent="@android:style/Widget.TextView">
@@ -72,11 +70,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">@font/roboto_ligth</item>
         <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="ActionBoldTextViewStyle" parent="@android:style/Widget.TextView">
@@ -85,10 +80,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+
     </style>
 
     <style name="ActionNormalTextViewStyle" parent="@android:style/Widget.TextView">
@@ -97,10 +89,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
     </style>
 
 

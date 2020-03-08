@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/subsc_credit_card_txt_1"
-            style="@style/TextViewStyle"
+            style="@style/NormalTextViewStyle"
             android:layout_marginTop="80dp"
             android:layout_marginLeft="16dp"
             android:text="@string/subscription_credit_text_1"
@@ -38,7 +38,7 @@
         <TextView
             android:layout_marginTop="168dp"
             android:id="@+id/subsc_credit_card_txt_2"
-            style="@style/TextViewStyle"
+            style="@style/NormalTextViewStyle"
             android:text="@string/subscription_credit_text_2"
             android:singleLine="true"
             />
@@ -64,7 +64,7 @@
       <TextView
           android:id="@+id/subsc_credit_card_txt_3"
             android:layout_alignParentTop="true"
-          style="@style/TextViewStyle"
+          style="@style/NormalTextViewStyle"
           android:text="@string/subscription_credit_text_3"
           android:singleLine="true"
           android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
 
       <TextView
           android:id="@+id/subsc_credit_card_txt_4"
-          style="@style/TextViewStyle"
+          style="@style/NormalTextViewStyle"
           android:layout_width="wrap_content"
             android:layout_alignParentTop="true"
           android:layout_alignStart="@+id/edit_subsc_card_cvv"
