@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:background="@color/bg_screen"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+
+
+<TextView
+    android:textColor="@color/primary_text_color"
+    android:text="@string/home_screen_text"
+    style="@style/LightTextViewStyle"
+    android:layout_marginTop="90dp"
+    android:paddingLeft="56dp"
+    android:paddingRight="56dp"
+    android:layout_width="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content"/>
+
+
+
+</FrameLayout>

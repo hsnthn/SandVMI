@@ -3,8 +3,8 @@
     <string name="app_name">SandVMI</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">julian.assange</string>
+    <string name="nav_header_subtitle">yearly plan</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="intro_App_title">Sand</string>
@@ -13,19 +13,19 @@
 
     <!-- Home Screen Strings -->
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_setting">Setting</string>
+    <string name="menu_about">About</string>
+    <string name="menu_signup">Sign Up</string>
+    <string name="menu_signin">Sign In</string>
 
     <!-- Splash Screen Strings -->
     <string name="splash4_title">Multiple device in one</string>
-    <string name="splash4_content">No need to carry different devices. Access multiple virtual phones from 1 device. Wipe and reset them whenever you want.</string>
+    <string name="splash4_content">No need to carry different devices. Access multiple virtual phones from 1 device. Wipe and reset them whenever you want. </string>
     <string name="splash3_title">Anonymity</string>
-    <string name="splash3_content">We Respect your privacy and ask only for minimum info needed to create your cloud device.</string>
+    <string name="splash3_content">We respect your privacy and ask only for the minimum info needed to create your cloud device.</string>
     <string name="splash2_title">No traceable logs</string>
-    <string name="splash2_content">With zero data stoder on your device. there is no sensitive info accessible if your phone is hacked or stolen.</string>
+    <string name="splash2_content">With zero data stored on your device, there is no sensitive info accessible if your phone is hacked or stolen.</string>
     <string name="splash1_title">Bulletproof security</string>
     <string name="splash1_content">Rely on military grade protection from hacks and data leaks with the support of tokens and one-time passwords.</string>
     <string name="next">Next</string>
@@ -80,6 +80,11 @@
     <string name="subscription_credit_text_4">Security Code</string>
     <string name="welcome_text">Welcome</string>
     <string name="confirmation_btn_text">Enter Sand Home</string>
+    <string name="home_screen_text">Your Virtual Device(s) will appear here once created.</string>
+    <string name="home_screen_button_text">Create your Virtual Device</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
 
 
     <string-array name="months_array">

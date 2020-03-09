@@ -26,7 +26,6 @@
         style="@style/LightTextViewStyle"
         android:gravity="center_horizontal"
         android:layout_marginTop="354dp"
-        android:padding="20dp"
         android:text="@string/splash1_content"
         />
 
