@@ -1,9 +1,7 @@
 package com.cybercrypt.sandvmi.adapter;
 
-import java.util.List;
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.TextViewCompat;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.model.DrawerItem;
+
+import java.util.List;
 
 public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 

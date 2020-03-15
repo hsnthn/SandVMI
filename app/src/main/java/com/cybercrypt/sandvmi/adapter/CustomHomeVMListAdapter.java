@@ -28,7 +28,6 @@ public class CustomHomeVMListAdapter extends ArrayAdapter<VMListItem> {
         this.layoutResID = layoutResourceID;
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

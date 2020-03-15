@@ -85,6 +85,9 @@
     <string name="sign_out">Sign Out</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
+    <string name="about_screen_text">This is about fragment</string>
+    <string name="profile_payment_text">Payment Information</string>
+    <string name="profile_contact_text">Contact Information</string>
 
 
     <string-array name="months_array">
