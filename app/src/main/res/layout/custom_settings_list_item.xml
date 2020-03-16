@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_centerVertical="true"
+    android:background="@color/bg_screen"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="20dp"
+        tools:src="@drawable/ic_profile_gray"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/im_setting_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="16dp"
+        style="@style/NormalTextViewStyle"
+        android:layout_toEndOf="@+id/im_setting_icon"
+        android:id="@+id/txt_settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        tools:text="Profile"
+        />
+
+    <TextView
+        android:layout_toEndOf="@+id/im_setting_icon"
+        android:id="@+id/txt_settings_info"
+        style="@style/LightTextViewStyle"
+        android:textSize="14sp"
+        android:layout_below="@+id/txt_settings_title"
+        tools:text="Contact details, preferences, etc."
+        android:layout_marginBottom="16dp"
+         />
+
+</RelativeLayout>

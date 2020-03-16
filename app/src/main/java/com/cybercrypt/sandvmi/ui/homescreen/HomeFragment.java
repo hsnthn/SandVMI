@@ -23,6 +23,10 @@ public class HomeFragment extends Fragment {
 
     private String dummytitle1,dummytitle2,lv1,lv2;
 
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -45,7 +49,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
 
 
         return root;

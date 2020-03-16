@@ -1,22 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:background="@color/bg_screen"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:id="@+id/loggeduser"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height"
+        android:background="@drawable/bg_user"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/txt_fullname"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="20sp"
+            style="@style/TitleTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_header_title"
+            />
+
+        <TextView
+            android:id="@+id/txt_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            style="@style/LightTextViewStyle"
+            android:text="@string/nav_header_subtitle" />
+    </LinearLayout>
 
 
-<TextView
-    android:textColor="@color/primary_text_color"
-    android:text="@string/home_screen_text"
-    style="@style/LightTextViewStyle"
-    android:layout_marginTop="90dp"
-    android:paddingLeft="56dp"
-    android:paddingRight="56dp"
-    android:layout_width="wrap_content"
-    android:gravity="center_horizontal"
-    android:layout_height="wrap_content"/>
+    <ListView
+        android:layout_below="@+id/loggeduser"
+        android:id="@+id/list_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:divider="@drawable/settings_list_divider"
+        android:dividerHeight="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
 
-
-
-</FrameLayout>
+</RelativeLayout>
