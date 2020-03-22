@@ -26,7 +26,7 @@
     <dimen name="subscription_text">16sp</dimen>
 
     <dimen name="status_bar_height">25dip</dimen>
-
+    <dimen name="keyboard_min_height">128dp</dimen>
 
 
 </resources>

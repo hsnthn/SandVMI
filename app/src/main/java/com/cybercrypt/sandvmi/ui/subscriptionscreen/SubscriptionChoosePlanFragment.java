@@ -51,7 +51,6 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
         final RelativeLayout chk_1_bg = (RelativeLayout)view.findViewById(R.id.subsc_1);
         final RelativeLayout chk_2_bg = (RelativeLayout)view.findViewById(R.id.subsc_2);
         btn_paymentMethod = (Button)view.findViewById(R.id.btn_continue);
-        btn_paymentMethod.setEnabled(false);
 
         chk_sub_plan_1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -98,7 +97,7 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
     private void enableButton(){
         if (!btn_paymentMethod.isEnabled()) {
             btn_paymentMethod.setEnabled(true);
-            btn_paymentMethod.setBackground( getResources().getDrawable(R.drawable.oval_button));
+            btn_paymentMethod.setBackground( getResources().getDrawable(R.drawable.bg_buttons));
 
         }
     }

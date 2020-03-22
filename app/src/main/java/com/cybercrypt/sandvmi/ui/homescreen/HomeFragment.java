@@ -1,5 +1,6 @@
 package com.cybercrypt.sandvmi.ui.homescreen;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,10 @@ public class HomeFragment extends Fragment {
         mVMListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
-
+                Dialog filterDialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                filterDialog.setContentView(R.layout.custom_loading_screen);
+                filterDialog.setCancelable(true);
+                filterDialog.show();
             }
         });
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/bg_screen"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_height="match_parent">
+
+   <TextView
+       style="@style/TitleTextViewStyle"
+       android:text="@string/signup_title"
+       android:layout_marginStart="16dp"
+       android:layout_marginEnd="16dp"
+       android:layout_marginTop="88dp"
+       android:gravity="center"
+       />
+
+    <EditText
+        android:id="@+id/edit_su_email"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="24dp"
+        android:drawableStart="@drawable/ic_mail_full_gray"
+        android:inputType="textEmailAddress"
+        android:hint="@string/signup_edit1_hint"
+        android:drawablePadding="10dp"
+        android:imeOptions="actionNext"
+        />
+
+    <EditText
+        android:id="@+id/edit_su_uname"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/ic_profile_full_gray"
+        android:inputType="textPersonName"
+        android:hint="@string/signup_edit2_hint"
+        android:drawablePadding="10dp"
+        android:imeOptions="actionNext"
+
+        />
+    <EditText
+        android:id="@+id/edit_su_pass"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/ic_lock_full_gray"
+        android:hint="@string/signup_edit3_hint"
+        android:drawablePadding="10dp"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        />
+
+    <TextView
+        android:id="@+id/txt_su_info"
+        style="@style/LightTextViewStyle"
+        android:text="@string/signup_info"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <Button
+        android:id="@+id/btn_su_signup"
+        style="@style/ButtonStyle"
+        android:enabled="false"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/signup_btn_txt"
+        />
+
+    <TextView
+        android:layout_marginTop="24dp"
+        style="@style/NormalTextViewStyle"
+        android:textSize="18sp"
+        android:text="@string/sigup_info_2"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        />
+
+</LinearLayout>

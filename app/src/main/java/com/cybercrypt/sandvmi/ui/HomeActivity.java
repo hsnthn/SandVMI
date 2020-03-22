@@ -1,9 +1,11 @@
 package com.cybercrypt.sandvmi.ui;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import com.cybercrypt.sandvmi.ui.homescreen.AboutFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.HomeFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.ProfileFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.SettingsFragment;
+import com.cybercrypt.sandvmi.ui.homescreen.SignupFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private final String ABOUTTAG="ABOUT";
     private final String SETTINGTAG="SETTING";
     private final String PROFILETAG="PROFILE";
+    private final String SIGNUPTAG="SIGNUP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +108,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        backToHome();
+                        onBackPressed();
                     }
                 });
 
@@ -128,42 +132,52 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void InitHomeFragment() {
         toolbar_text.setText(dataList.get(0).getItemName());
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, HomeFragment.newInstance()).commit();
+        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, HomeFragment.newInstance(),HOMETAG).commit();
     }
 
-    private void backToHome(){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        if (fragmentManager.getBackStackEntryCount()>1){
 
-        }else {
-            toolbar_text.setText(dataList.get(0).getItemName());
-            enableBackButton(false);
-            cAdapter.selectItem(0);
+    private void hideKeyboard() {
+        try {
+            InputMethodManager inputmanager = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputmanager != null) {
+                inputmanager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+            }
+        } catch (Exception var2) {
         }
-        onBackPressed();
 
     }
-
 
     @Override
     public void onBackPressed() {
+        hideKeyboard();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            if (fragmentManager.getBackStackEntryCount() > 0) {
+            if (fragmentManager.getBackStackEntryCount() ==1 ) {
                 fragmentManager.popBackStack();
+                toolbar_text.setText(dataList.get(0).getItemName());
+                enableBackButton(false);
+                cAdapter.selectItem(0);
             } else {
                 super.onBackPressed();
             }
         }
     }
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
+    }
+
+    private void changeFragmentFromDrawer(Fragment fragment,String layoutTag){
+        if (!layoutTag.equals(HOMETAG)) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, layoutTag).addToBackStack(null).commit();
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
     }
 
     private void navController(int pos) {
@@ -189,11 +203,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } catch (Exception e) {
             e.printStackTrace();
         }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment,dataList.get(pos).getLayout_tag()).addToBackStack(null).commit();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        changeFragmentFromDrawer(fragment,dataList.get(pos).getLayout_tag());
+    }
+
+    public void SignupClick(View view){
+        toolbar_text.setText("Create Account");
+        enableBackButton(true);
+        changeFragmentFromDrawer(SignupFragment.newInstance(),SIGNUPTAG);
     }
 
     @Override
