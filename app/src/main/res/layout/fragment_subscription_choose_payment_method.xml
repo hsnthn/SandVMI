@@ -85,7 +85,8 @@
 
 
     <Button
-        style="@style/ButtonStyleDisabled"
+        style="@style/ButtonStyle"
+        android:enabled="false"
         android:layout_gravity="center_horizontal"
         android:id="@+id/btn_continue"
         android:layout_marginTop="489dp"

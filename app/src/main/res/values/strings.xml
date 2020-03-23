@@ -88,6 +88,15 @@
     <string name="about_screen_text">This is about fragment</string>
     <string name="profile_payment_text">Payment Information</string>
     <string name="profile_contact_text">Contact Information</string>
+    <string name="signup_title">Sign up to create your first Virtual Device</string>
+    <string name="signup_info">Enter a password that has at least 8 characters which includes:\n - 1 Uppercase and 1 Lowercase letter\n  - 1 Number and 1 Special Character (e.g. $%^)</string>
+    <string name="signup_btn_txt">Sign Up</string>
+    <string name="sigup_info_2">By signing up, you agree to Sand’s Terms and Conditions.</string>
+    <string name="signup_edit1_hint">Email address</string>
+    <string name="signup_edit2_hint" >Username</string>
+    <string name="signup_edit3_hint">Password</string>
+    <string name="loading_title">Loading</string>
+    <string name="loading_text">Securely accessing your dashboard</string>
 
 
     <string-array name="months_array">

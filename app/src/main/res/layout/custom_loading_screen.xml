@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@color/bg_screen"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_marginTop="208dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_loading"/>
+
+    <TextView
+        style="@style/TitleTextViewStyle"
+        android:text="@string/loading_title"
+        android:gravity="center"
+        android:layout_marginTop="266dp"
+        />
+
+    <TextView
+        android:layout_marginTop="295dp"
+        style="@style/LightTextViewStyle"
+        android:text="@string/loading_text"
+        android:gravity="center"
+        />
+
+</FrameLayout>
