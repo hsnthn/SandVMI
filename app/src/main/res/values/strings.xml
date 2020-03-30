@@ -21,13 +21,13 @@
 
     <!-- Splash Screen Strings -->
     <string name="splash4_title">Multiple device in one</string>
-    <string name="splash4_content">No need to carry different devices. Access multiple virtual phones from 1 device. Wipe and reset them whenever you want. </string>
+    <string name="splash4_content">No need to carry different devices. Access\n multiple virtual phones from 1 device.\n Wipe and reset them whenever you want. </string>
     <string name="splash3_title">Anonymity</string>
-    <string name="splash3_content">We respect your privacy and ask only for the minimum info needed to create your cloud device.</string>
+    <string name="splash3_content">We respect your privacy and ask only for\n the minimum info needed to create your\n cloud device.</string>
     <string name="splash2_title">No traceable logs</string>
-    <string name="splash2_content">With zero data stored on your device, there is no sensitive info accessible if your phone is hacked or stolen.</string>
+    <string name="splash2_content">With zero data stored on your device, there\n is no sensitive info accessible if your phone\n is hacked or stolen.</string>
     <string name="splash1_title">Bulletproof security</string>
-    <string name="splash1_content">Rely on military grade protection from hacks and data leaks with the support of tokens and one-time passwords.</string>
+    <string name="splash1_content">Rely on military grade protection from\n hacks and data leaks with the support of\n tokens and one-time passwords.</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="getstart">Get Started</string>
@@ -74,7 +74,7 @@
     <string name="number_eight">8</string>
     <string name="number_nine">9</string>
     <string name="number_zero">0</string>
-    <string name="subscription_buy_now">Buy Now</string>
+    <string name="subscription_buy_now">Buy Subscription Now</string>
     <string name="subscription_credit_text_3">Expired</string>
     <string name="subscription_credit_edit3_hint">CVV...</string>
     <string name="subscription_credit_text_4">Security Code</string>
@@ -88,7 +88,7 @@
     <string name="about_screen_text">This is about fragment</string>
     <string name="profile_payment_text">Payment Information</string>
     <string name="profile_contact_text">Contact Information</string>
-    <string name="signup_title">Sign up to create your first Virtual Device</string>
+    <string name="signup_title">Sign up to create your first\n Virtual Device</string>
     <string name="signup_info">Enter a password that has at least 8 characters which includes:\n - 1 Uppercase and 1 Lowercase letter\n  - 1 Number and 1 Special Character (e.g. $%^)</string>
     <string name="signup_btn_txt">Sign Up</string>
     <string name="sigup_info_2">By signing up, you agree to Sand’s Terms and Conditions.</string>
@@ -97,7 +97,19 @@
     <string name="signup_edit3_hint">Password</string>
     <string name="loading_title">Loading</string>
     <string name="loading_text">Securely accessing your dashboard</string>
+    <string name="login_title">Sign in to access your\n Virtual Device</string>
+    <string name="login_signup">Don’t have an account? <b>Sign up</b></string>
+    <string name="login_btn_txt">Sign in</string>
+    <string name="login_forgot_pass">Forgot your password?</string>
 
+    <string name="toolbar_signin">Welcome Back</string>
+    <string name="toolbar_signup">Create Account</string>
+    <string name="toolbar_forgotpassword">Forgot Password</string>
+    <string name="forgotpassword_title">Reset Password</string>
+    <string name="forgot_btn_txt">Reset your password</string>
+
+    <string name="error_login">The username or password is incorrect.</string>
+    <string name="trial">Already have an account? Sign in</string>
 
     <string-array name="months_array">
         <item>01</item>

@@ -1,5 +1,6 @@
 package com.cybercrypt.sandvmi.ui.subscriptionscreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.cybercrypt.sandvmi.R;
+import com.cybercrypt.sandvmi.ui.HomeActivity;
+import com.cybercrypt.sandvmi.ui.IntroSliderScreenActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 public class SubscriptionChoosePlanFragment extends BaseFragment {
@@ -42,7 +45,7 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(SubscriptionHomeFragment.newInstance());
+                launchHomeScreen();
             }
         });
 
@@ -97,9 +100,13 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
     private void enableButton(){
         if (!btn_paymentMethod.isEnabled()) {
             btn_paymentMethod.setEnabled(true);
-            btn_paymentMethod.setBackground( getResources().getDrawable(R.drawable.bg_buttons));
-
         }
+    }
+
+    private void launchHomeScreen() {
+        Intent i = new Intent(getActivity(), HomeActivity.class);
+        startActivity(i);
+        getActivity().finish();
     }
 
 

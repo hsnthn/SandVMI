@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay_login"
     android:background="@color/bg_screen"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -7,30 +8,19 @@
     android:focusableInTouchMode="true"
     android:layout_height="match_parent">
 
-   <TextView
-       style="@style/TitleTextViewStyle"
-       android:text="@string/signup_title"
-       android:layout_marginStart="16dp"
-       android:layout_marginEnd="16dp"
-       android:layout_marginTop="78dp"
-       android:gravity="center"
-       />
-
-    <EditText
-        android:id="@+id/edit_su_email"
-        style="@style/EditTextStyle"
-        android:layout_marginTop="24dp"
-        android:drawableStart="@drawable/ic_mail_full_gray"
-        android:inputType="textEmailAddress"
-        android:hint="@string/signup_edit1_hint"
-        android:drawablePadding="10dp"
-        android:imeOptions="actionNext"
+    <TextView
+        style="@style/TitleTextViewStyle"
+        android:text="@string/login_title"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="78dp"
+        android:gravity="center"
         />
 
     <EditText
-        android:id="@+id/edit_su_uname"
+        android:id="@+id/edit_lo_uname"
         style="@style/EditTextStyle"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:drawableStart="@drawable/ic_profile_full_gray"
         android:inputType="textPersonName"
         android:hint="@string/signup_edit2_hint"
@@ -39,7 +29,7 @@
 
         />
     <EditText
-        android:id="@+id/edit_su_pass"
+        android:id="@+id/edit_lo_pass"
         style="@style/EditTextStyle"
         android:layout_marginTop="8dp"
         android:drawableStart="@drawable/ic_lock_full_gray"
@@ -50,31 +40,37 @@
         />
 
     <TextView
-        android:id="@+id/txt_su_info"
+        android:id="@+id/txt_lo_forgot"
         style="@style/LightTextViewStyle"
-        android:text="@string/signup_info"
+        android:text="@string/login_forgot_pass"
         android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="ForgotPasswordClick"
+        android:gravity="center"
         />
 
     <Button
-        android:id="@+id/btn_su_signup"
+        android:id="@+id/btn_lo_login"
         style="@style/ButtonStyle"
         android:enabled="false"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"
-        android:text="@string/signup_btn_txt"
+        android:text="@string/login_btn_txt"
         />
 
     <TextView
+        android:onClick="SignupClick"
+        android:clickable="true"
         android:layout_marginTop="24dp"
         style="@style/NormalTextViewStyle"
         android:textSize="18sp"
-        android:text="@string/sigup_info_2"
+        android:text="@string/login_signup"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
-        />
+        android:focusable="true" />
 
 </LinearLayout>

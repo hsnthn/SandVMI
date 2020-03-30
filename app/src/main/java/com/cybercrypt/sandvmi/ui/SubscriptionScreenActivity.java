@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.cybercrypt.sandvmi.R;
-import com.cybercrypt.sandvmi.ui.subscriptionscreen.SubscriptionHomeFragment;
+import com.cybercrypt.sandvmi.ui.subscriptionscreen.SubscriptionChoosePlanFragment;
 
 public class SubscriptionScreenActivity extends FragmentActivity {
 
@@ -25,7 +25,7 @@ public class SubscriptionScreenActivity extends FragmentActivity {
 
 
         if (savedInstanceState == null) {
-            transitionTo(SubscriptionHomeFragment.newInstance());
+            transitionTo(SubscriptionChoosePlanFragment.newInstance());
         }
 
     }

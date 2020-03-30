@@ -98,6 +98,10 @@ public class SignupFragment extends Fragment {
             }
         });
 
+        edit_email.setOnFocusChangeListener(focusChangeListener);
+        edit_pass.setOnFocusChangeListener(focusChangeListener);
+        edit_user.setOnFocusChangeListener(focusChangeListener);
+
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,16 +142,27 @@ public class SignupFragment extends Fragment {
         return root;
     }
 
+    View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View view, boolean hasFocus) {
+            if (!hasFocus) {
+                txt_signup_info.setVisibility(View.VISIBLE);
+            }else{
+                txt_signup_info.setVisibility(View.GONE);
+
+            }
+
+        }
+    };
+
 
     private boolean checkValidations(){
         if(email_val_status && uname_val_status && pass_val_status){
             btn_signup.setEnabled(true);
-            txt_signup_info.setVisibility(View.GONE);
             return true;
         }else{
             if (btn_signup.isEnabled()) {
                 btn_signup.setEnabled(false);
-                txt_signup_info.setVisibility(View.VISIBLE);
             }
             return false;
         }

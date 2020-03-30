@@ -15,6 +15,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:letterSpacing">0.05</item>
 
     </style>
 

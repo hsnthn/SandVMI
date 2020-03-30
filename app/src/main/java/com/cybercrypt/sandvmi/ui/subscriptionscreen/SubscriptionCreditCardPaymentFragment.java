@@ -22,7 +22,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
-public class SubscriptionCreditCardPaymentFragment extends BaseFragment implements View.OnClickListener {
+//implements View.OnClickListener
+public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
 
     private EditText edit_card_number;
     private final String EDIT_CARD_NUM_TAG ="CARDNUM";
@@ -30,15 +31,11 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
     private EditText edit_card_cvv;
     private final String EDIT_CARD_CVV_TAG ="CARDCVV";
     private TableLayout keyboard;
-
-    public SubscriptionCreditCardPaymentFragment() {
-        // Required empty public constructor
-    }
+    private Button btn_buy_now;
 
     public static SubscriptionCreditCardPaymentFragment newInstance() {
         return new SubscriptionCreditCardPaymentFragment();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,11 +50,13 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideKeyboard();
                 changeFragment(SubscriptionChoosePaymentPlanFragment.newInstance());
             }
         });
 
         edit_card_number = view.findViewById(R.id.edit_subsc_card_number);
+        edit_card_number.setTransformationMethod(null);
         edit_card_name = view.findViewById(R.id.edit_subsc_card_name);
         edit_card_number.setTag(EDIT_CARD_NUM_TAG);
         edit_card_cvv = view.findViewById(R.id.edit_subsc_card_cvv);
@@ -65,7 +64,7 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
 
         Spinner spinner_months = view.findViewById(R.id.spin_subsc_card_expire_month);
         Spinner spinner_years = view.findViewById(R.id.spin_subsc_card_expire_year);
-        Button btn_buy_now = view.findViewById(R.id.btn_credit_card_buy);
+        btn_buy_now = view.findViewById(R.id.btn_credit_card_buy);
         btn_buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +72,7 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
             }
         });
 
-        initCustomKeyboard(view);
-
+        //initCustomKeyboard(view);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.months_array, R.layout.spinner_item);
@@ -85,23 +83,25 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
         adapter2.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner_years.setAdapter(adapter2);
 
-
-
-        edit_card_name.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
-
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         edit_card_number.requestFocus();
-        edit_card_number.setOnFocusChangeListener(card_view_focus);
-        edit_card_number.setOnTouchListener(card_view_touch);
+
+        edit_card_cvv.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        //edit_card_number.setOnFocusChangeListener(card_view_focus);
+        //edit_card_number.setOnTouchListener(card_view_touch);
         edit_card_number.addTextChangedListener(credit_card_num_watcher);
 
-        edit_card_cvv.setOnFocusChangeListener(card_view_focus);
-        edit_card_cvv.setOnTouchListener(card_view_touch);
+        //edit_card_cvv.setOnFocusChangeListener(card_view_focus);
+        //edit_card_cvv.setOnTouchListener(card_view_touch);
 
+        edit_card_number.addTextChangedListener(textEmptyCheck);
+        edit_card_cvv.addTextChangedListener(textEmptyCheck);
+        edit_card_name.addTextChangedListener(textEmptyCheck);
 
         return view;
     }
-
+/*
     void initCustomKeyboard(View view){
         keyboard = view.findViewById(R.id.keyboard);
         TextView k0=view.findViewById(R.id.t9_key_0);
@@ -129,107 +129,64 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
         k9.setOnClickListener(this);
         kok.setOnClickListener(this);
         kback.setOnClickListener(this);
+    }
+*/
+    private void hideKeyboard() {
+        try {
+            InputMethodManager inputmanager = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputmanager != null) {
+                inputmanager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+            }
+        } catch (Exception var2) {
+        }
 
     }
 
 
     private TextWatcher credit_card_num_watcher = new TextWatcher() {
 
-        private static final int TOTAL_SYMBOLS = 19; // size of pattern 0000-0000-0000-0000
-        private static final int TOTAL_DIGITS = 16; // max numbers of digits in pattern: 0000 x 4
-        private static final int DIVIDER_MODULO = 5; // means divider position is every 5th symbol beginning with 1
-        private static final int DIVIDER_POSITION = DIVIDER_MODULO - 1; // means divider position is every 4th symbol beginning with 0
-        private static final char DIVIDER = ' ';
+        @Override
+        public void onTextChanged(CharSequence s, int arg1, int arg2,
+                                  int arg3) { }
 
         @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            // noop
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // noop
-        }
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (!isInputCorrect(s, TOTAL_SYMBOLS, DIVIDER_MODULO, DIVIDER)) {
-                s.replace(0, s.length(), buildCorrectString(getDigitArray(s, TOTAL_DIGITS), DIVIDER_POSITION, DIVIDER));
-            }
-        }
-
-        private boolean isInputCorrect(Editable s, int totalSymbols, int dividerModulo, char divider) {
-            boolean isCorrect = s.length() <= totalSymbols; // check size of entered string
-            for (int i = 0; i < s.length(); i++) { // check that every element is right
-                if (i > 0 && (i + 1) % dividerModulo == 0) {
-                    isCorrect &= divider == s.charAt(i);
-                } else {
-                    isCorrect &= Character.isDigit(s.charAt(i));
-                }
-            }
-            return isCorrect;
-        }
-
-        private String buildCorrectString(char[] digits, int dividerPosition, char divider) {
-            final StringBuilder formatted = new StringBuilder();
-
-            for (int i = 0; i < digits.length; i++) {
-                if (digits[i] != 0) {
-                    formatted.append(digits[i]);
-                    if ((i > 0) && (i < (digits.length - 1)) && (((i + 1) % dividerPosition) == 0)) {
-                        formatted.append(divider);
-                    }
-                }
+            String initial = s.toString();
+            // remove all non-digits characters
+            String processed = initial.replaceAll("\\D", "");
+            // insert a space after all groups of 4 digits that are followed by another digit
+            processed = processed.replaceAll("(\\d{4})(?=\\d)", "$1 ");
+            // to avoid stackoverflow errors, check that the processed is different from what's already
+            //  there before setting
+            if (!initial.equals(processed)) {
+                // set the value
+                s.replace(0, initial.length(), processed);
             }
 
-            return formatted.toString();
         }
 
-        private char[] getDigitArray(final Editable s, final int size) {
-            char[] digits = new char[size];
-            int index = 0;
-            for (int i = 0; i < s.length() && index < size; i++) {
-                char current = s.charAt(i);
-                if (Character.isDigit(current)) {
-                    digits[index] = current;
-                    index++;
-                }
-            }
-            return digits;
-        }
     };
 
-
-    private View.OnFocusChangeListener card_view_focus =   new View.OnFocusChangeListener() {
+    private TextWatcher textEmptyCheck= new TextWatcher() {
         @Override
-        public void onFocusChange(View view, boolean hasFocus) {
-            if (!hasFocus) {
-                keyboard.setVisibility(View.GONE);
-            }else{
-                keyboard.setVisibility(View.VISIBLE);
-            }
+        public void afterTextChanged(Editable s) {
+            btn_buy_now.setEnabled(edit_card_number.getText().toString().length() > 0 &&edit_card_cvv.getText().toString().length() > 0 && edit_card_name.getText().toString().length()>0);
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before,
+                                  int count) {
 
         }
     };
-
-    private View.OnTouchListener card_view_touch = new View.OnTouchListener() {
-        public boolean onTouch (View v, MotionEvent event) {
-            InputMethodManager imm = (InputMethodManager) getActivity().getApplicationContext().getSystemService(
-                    android.content.Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-            if(v.equals(edit_card_number)){
-                edit_card_number.requestFocus();
-                keyboard.setVisibility(View.VISIBLE);
-            }else if(v.equals(edit_card_cvv)){
-                edit_card_cvv.requestFocus();
-                keyboard.setVisibility(View.VISIBLE);
-            }
-            return true;
-
-        }
-    };
-
-
 
     /*
     private View.OnKeyListener card_name_ok_click  = new View.OnKeyListener() {
@@ -244,6 +201,7 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
 
 
 */
+    /*
     @Override
     public void onClick(View v) {
         EditText focused_view = (EditText) getActivity().getCurrentFocus();
@@ -277,7 +235,7 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment implemen
             imm.showSoftInput(view,InputMethodManager.SHOW_IMPLICIT);
         }
     }
-
+*/
 
 }
 

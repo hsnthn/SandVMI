@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/bg_screen"
     android:layout_height="match_parent">
 
     <androidx.viewpager.widget.ViewPager
@@ -33,6 +34,17 @@
         android:background="@null"
         android:text="@string/skip"
         android:textSize="@dimen/medium_text_size"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        style="@style/ActionBoldTextViewStyle"
+        android:id="@+id/btn_trial"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@null"
+        android:text="@string/trial"
+        android:textSize="@dimen/medium_text_size"
+        android:visibility="invisible"
         android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>
