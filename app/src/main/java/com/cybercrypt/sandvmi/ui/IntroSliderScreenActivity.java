@@ -25,7 +25,7 @@ public class IntroSliderScreenActivity extends Activity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext;
+    private Button btnSkip, btnNext,btnTry7Day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class IntroSliderScreenActivity extends Activity {
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
+        btnTry7Day = (Button) findViewById(R.id.btn_trial);
 
 
         // layouts of all welcome sliders
@@ -48,7 +49,8 @@ public class IntroSliderScreenActivity extends Activity {
                 R.layout.welcome_slide1,
                 R.layout.welcome_slide2,
                 R.layout.welcome_slide3,
-                R.layout.welcome_slide4};
+                R.layout.welcome_slide4,
+                R.layout.welcome_slide5};
 
         // adding bottom dots
         addBottomDots(0);
@@ -63,8 +65,15 @@ public class IntroSliderScreenActivity extends Activity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lastPage=4;
+                int lastPage=layouts.length;
                 viewPager.setCurrentItem(lastPage);
+            }
+        });
+
+        btnTry7Day.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchHomeScreen();
             }
         });
 
@@ -108,7 +117,9 @@ public class IntroSliderScreenActivity extends Activity {
     }
 
     private void launchHomeScreen() {
-        startActivity(new Intent(IntroSliderScreenActivity.this, HomeActivity.class));
+        Intent i = new Intent(IntroSliderScreenActivity.this, HomeActivity.class);
+        i.putExtra("fragment", HomeActivity.LOGINTAG);
+        startActivity(i);
         finish();
     }
 
@@ -127,12 +138,15 @@ public class IntroSliderScreenActivity extends Activity {
             // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
-                btnNext.setText(getString(R.string.getstart));
+                btnNext.setText(getString(R.string.subscription_home_button_text));
                 btnSkip.setVisibility(View.INVISIBLE);
+                btnTry7Day.setVisibility(View.VISIBLE);
             } else {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
+                btnTry7Day.setVisibility(View.INVISIBLE);
+
             }
         }
 

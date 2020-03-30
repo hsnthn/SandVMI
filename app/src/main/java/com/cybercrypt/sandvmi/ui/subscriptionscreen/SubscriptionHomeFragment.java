@@ -1,3 +1,4 @@
+/*
 package com.cybercrypt.sandvmi.ui.subscriptionscreen;
 
 import android.content.Intent;
@@ -29,7 +30,7 @@ public class SubscriptionHomeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
 
 
-        View view =inflater.inflate(R.layout.fragment_subscription_home, container, false);
+        View view =inflater.inflate(R.layout.welcome_slide5, container, false);
 
 
         final TextView trial7Day = (TextView)view.findViewById(R.id.link_skip);
@@ -37,7 +38,7 @@ public class SubscriptionHomeFragment extends BaseFragment {
         trial7Day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchHome();
+                ;
             }
         });
 
@@ -54,13 +55,5 @@ public class SubscriptionHomeFragment extends BaseFragment {
         return view;
     }
 
-    private void launchHome(){
-        Intent homeIntenet = new Intent(getActivity(), HomeActivity.class);
-        startActivity(homeIntenet);
-        getActivity().finish();
-
-    }
-
-
-
 }
+*/

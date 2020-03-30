@@ -1,6 +1,7 @@
 package com.cybercrypt.sandvmi.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,7 +24,9 @@ import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.adapter.CustomDrawerAdapter;
 import com.cybercrypt.sandvmi.model.DrawerItem;
 import com.cybercrypt.sandvmi.ui.homescreen.AboutFragment;
+import com.cybercrypt.sandvmi.ui.homescreen.ForgotPasswordFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.HomeFragment;
+import com.cybercrypt.sandvmi.ui.homescreen.LoginFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.ProfileFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.SettingsFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.SignupFragment;
@@ -42,11 +45,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private boolean mToolBarNavigationListenerIsRegistered = false;
 
-    private final String HOMETAG="HOME";
-    private final String ABOUTTAG="ABOUT";
-    private final String SETTINGTAG="SETTING";
-    private final String PROFILETAG="PROFILE";
-    private final String SIGNUPTAG="SIGNUP";
+    public static final String HOMETAG="HOME";
+    public static final String ABOUTTAG="ABOUT";
+    public static final String SETTINGTAG="SETTING";
+    public static final String PROFILETAG="PROFILE";
+    public static final String SIGNUPTAG="SIGNUP";
+    public static final String LOGINTAG = "LOGIN";
+    public static final String FORGOTPASSWORDTAG = "FORGOTPASSWORD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +95,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-
         InitHomeFragment();
 
+        Intent intent = getIntent();
+        if (intent.hasExtra("fragment")) {
+            String fragName= intent.getStringExtra("fragment");
+            if (fragName.equals(LOGINTAG)){
+                showLoginFragment();
+            }
+        }
     }
 
     private void enableBackButton(boolean enable) {
@@ -129,13 +140,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void InitHomeFragment() {
-        toolbar_text.setText(dataList.get(0).getItemName());
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, HomeFragment.newInstance(),HOMETAG).commit();
-    }
-
-
     private void hideKeyboard() {
         try {
             InputMethodManager inputmanager = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -162,6 +166,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 cAdapter.selectItem(0);
             } else {
                 super.onBackPressed();
+                String fragTag=fragmentManager.findFragmentById(R.id.nav_host_fragment).getTag().toString();
+                if (fragTag.equals(LOGINTAG)){
+                    toolbar_text.setText(getResources().getText(R.string.toolbar_signin));
+                }
             }
         }
     }
@@ -171,13 +179,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
-    private void changeFragmentFromDrawer(Fragment fragment,String layoutTag){
-        if (!layoutTag.equals(HOMETAG)) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, layoutTag).addToBackStack(null).commit();
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
+    private void InitHomeFragment() {
+        toolbar_text.setText(dataList.get(0).getItemName());
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, HomeFragment.newInstance(),HOMETAG).commit();
+    }
+
+    private void showLoginFragment(){
+        toolbar_text.setText(getResources().getText(R.string.toolbar_signin));
+        enableBackButton(true);
+        changeFragment(LoginFragment.newInstance(),LOGINTAG,false);
     }
 
     private void navController(int pos) {
@@ -204,13 +216,34 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
 
-        changeFragmentFromDrawer(fragment,dataList.get(pos).getLayout_tag());
+        changeFragment(fragment,dataList.get(pos).getLayout_tag(),true);
     }
 
+    private void changeFragment(Fragment fragment, String layoutTag, boolean fromDrawer){
+        if (!layoutTag.equals(HOMETAG)) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, layoutTag).addToBackStack(null).commit();
+        }
+        if (fromDrawer) {
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+        }
+    }
+
+
     public void SignupClick(View view){
-        toolbar_text.setText("Create Account");
+        toolbar_text.setText(getResources().getText(R.string.toolbar_signup));
         enableBackButton(true);
-        changeFragmentFromDrawer(SignupFragment.newInstance(),SIGNUPTAG);
+        changeFragment(SignupFragment.newInstance(),SIGNUPTAG,false);
+    }
+
+    public void LoginClick(View view){
+        showLoginFragment();
+    }
+
+    public void ForgotPasswordClick(View view){
+        toolbar_text.setText(getResources().getText(R.string.toolbar_forgotpassword));
+        changeFragment(ForgotPasswordFragment.newInstance(),FORGOTPASSWORDTAG,false);
     }
 
     @Override
@@ -221,17 +254,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
     @Override
     public void onProfileSelected() {
-
-        Fragment fragment = null;
-        try {
-            fragment = (Fragment) ProfileFragment.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment,PROFILETAG).addToBackStack(null).commit();
+        changeFragment(ProfileFragment.newInstance(),PROFILETAG,false);
     }
 }

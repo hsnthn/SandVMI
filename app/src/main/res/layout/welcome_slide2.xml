@@ -23,6 +23,8 @@
 
     <TextView
         android:gravity="center_horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         style="@style/LightTextViewStyle"
         android:layout_marginTop="354dp"
         android:text="@string/splash2_content"

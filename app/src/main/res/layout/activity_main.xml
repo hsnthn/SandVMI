@@ -64,6 +64,7 @@
             <TextView
                 android:id="@+id/btn_sing_in"
                 style="@style/LightTextViewStyle"
+                android:onClick="LoginClick"
                 android:layout_width="match_parent"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="24dp"

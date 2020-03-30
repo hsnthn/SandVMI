@@ -90,7 +90,6 @@ public class SubscriptionChoosePaymentPlanFragment extends BaseFragment {
                     changeFragment(SubscriptionCreditCardPaymentFragment.newInstance());
                 }else{
                     changeFragment(SubscriptionCryptocurrencyPaymentFragment.newInstance());
-
                 }
 
             }
@@ -104,7 +103,6 @@ public class SubscriptionChoosePaymentPlanFragment extends BaseFragment {
     private void enableButton(){
         if (!btn_paymentMethod.isEnabled()) {
             btn_paymentMethod.setEnabled(true);
-
         }
     }
 

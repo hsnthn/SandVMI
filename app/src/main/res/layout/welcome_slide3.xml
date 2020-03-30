@@ -24,7 +24,9 @@
 
     <TextView
         style="@style/LightTextViewStyle"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:layout_marginTop="354dp"
         android:padding="20dp"
         android:text="@string/splash3_content"
