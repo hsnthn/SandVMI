@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<FrameLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/bg_screen"
-    android:paddingTop="25dp"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/toolbar_subscription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
     <ImageView
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="32dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
@@ -22,7 +15,7 @@
 
     <TextView
         style="@style/TitleTextViewStyle"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="279dp"
         android:gravity="center_horizontal"
         android:text="@string/subscription_choose_plan_sub_title" />
 
@@ -32,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="319dp"
         android:background="@drawable/ic_check_sub_plan_unselected"
         android:layout_height="57dp">
 
@@ -60,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="409dp"
+        android:layout_marginTop="384dp"
         android:background="@drawable/ic_check_sub_plan_unselected"
         android:layout_height="57dp">
 
@@ -89,10 +82,11 @@
         android:enabled="false"
         android:layout_gravity="center_horizontal"
         android:id="@+id/btn_continue"
-        android:layout_marginTop="489dp"
+        android:layout_marginTop="464dp"
         android:text="@string/subscription_continue"
         />
 
 
 
 </FrameLayout>
+</layout>

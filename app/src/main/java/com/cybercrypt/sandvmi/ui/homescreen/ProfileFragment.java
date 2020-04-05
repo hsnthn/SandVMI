@@ -5,19 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.adapter.CustomProfileListAdapter;
+import com.cybercrypt.sandvmi.databinding.FragmentProfileBinding;
 import com.cybercrypt.sandvmi.model.ProfileItem;
 
 import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
+
+    private FragmentProfileBinding binding;
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
@@ -25,26 +27,23 @@ public class ProfileFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
 
-        View root = inflater.inflate(R.layout.fragment_profile, container, false);
-
-
-        ListView mSettingListView = root.findViewById(R.id.list_profile);
 
         final CustomProfileListAdapter cAdapter=new CustomProfileListAdapter(
                 getActivity(),
                 R.layout.custom_profile_list_item,
                 prepareProfileMenu());
-        mSettingListView.setAdapter(cAdapter);
+        binding.listProfile.setAdapter(cAdapter);
 
-        mSettingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listProfile.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
             }
         });
 
-        return root;
+        return binding.getRoot();
     }
 
     private ArrayList<ProfileItem> prepareProfileMenu(){

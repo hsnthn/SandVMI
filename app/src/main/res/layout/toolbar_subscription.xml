@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="toolbartitle"
+            type="String"
+            />
+
+        <variable
+            name="navicon"
+            type="int"
+            />
+    </data>
 
 <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar_subs"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/bg_screen"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    app:navigationIcon="@{navicon}"
+
+    android:background="@color/bg_screen">
 
     <TextView
         android:id="@+id/toolbar_title"
@@ -15,6 +29,8 @@
         android:fontFamily="@font/varela_round_regular"
         android:textSize="14sp"
         android:layout_gravity="center"
+        android:text="@{toolbartitle}"
         />
 
 </androidx.appcompat.widget.Toolbar>
+</layout>

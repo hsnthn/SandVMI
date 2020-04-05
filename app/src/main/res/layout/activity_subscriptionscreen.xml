@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="25dp"
+    android:background="@color/bg_screen"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_subscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
     <!-- a frame layout for replace in full-->
@@ -12,3 +22,4 @@
         android:layout_height="match_parent"/>
 
 </LinearLayout>
+</layout>

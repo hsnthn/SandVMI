@@ -4,11 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
 
 import com.cybercrypt.sandvmi.R;
+import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionCryptocurrencyDetailsBinding;
+import com.cybercrypt.sandvmi.ui.SubscriptionScreenActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 public class SubscriptionCryptocurrencyPaymentFragment extends BaseFragment {
@@ -28,27 +29,19 @@ public class SubscriptionCryptocurrencyPaymentFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =inflater.inflate(R.layout.fragment_subscription_cryptocurrency_details, container, false);
+        FragmentSubscriptionCryptocurrencyDetailsBinding binding= DataBindingUtil.inflate(inflater, R.layout.fragment_subscription_cryptocurrency_details, container, false);
 
-        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_subs);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_nav_back));
-        final TextView page_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        page_title.setText(getResources().getString(R.string.subscription_choose_payment_plan_title));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeFragment(SubscriptionChoosePaymentPlanFragment.newInstance());
-            }
-        });
+        setToolbarTitle(getResources().getString(R.string.subscription_choose_payment_plan_title));
+        toolbarNavIcon(true);
 
 
-
-
-
-
-        return view;
+        return binding.getRoot();
     }
 
-
+    @Override
+    public void onNavigationIconClick() {
+        super.onNavigationIconClick();
+        getActivity().onBackPressed();
+    }
 }
 

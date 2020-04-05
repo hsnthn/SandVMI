@@ -5,135 +5,84 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 
 import com.cybercrypt.sandvmi.R;
+import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionCreditCardDetailsBinding;
+import com.cybercrypt.sandvmi.ui.SubscriptionScreenActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
+import com.cybercrypt.sandvmi.ui.util.OnNavigationIconClick;
 
-//implements View.OnClickListener
 public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
 
-    private EditText edit_card_number;
-    private final String EDIT_CARD_NUM_TAG ="CARDNUM";
-    private EditText edit_card_name;
-    private EditText edit_card_cvv;
-    private final String EDIT_CARD_CVV_TAG ="CARDCVV";
-    private TableLayout keyboard;
-    private Button btn_buy_now;
+    private FragmentSubscriptionCreditCardDetailsBinding binding;
 
     public static SubscriptionCreditCardPaymentFragment newInstance() {
         return new SubscriptionCreditCardPaymentFragment();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_subscription_credit_card_details, container, false);
 
-        View view =inflater.inflate(R.layout.fragment_subscription_credit_card_details, container, false);
 
-        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_subs);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_nav_back));
-        final TextView page_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        page_title.setText(getResources().getString(R.string.subscription_choose_payment_plan_title));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideKeyboard();
-                changeFragment(SubscriptionChoosePaymentPlanFragment.newInstance());
-            }
-        });
+        setToolbarTitle(getResources().getString(R.string.subscription_choose_payment_plan_title));
+        toolbarNavIcon(true);
 
-        edit_card_number = view.findViewById(R.id.edit_subsc_card_number);
-        edit_card_number.setTransformationMethod(null);
-        edit_card_name = view.findViewById(R.id.edit_subsc_card_name);
-        edit_card_number.setTag(EDIT_CARD_NUM_TAG);
-        edit_card_cvv = view.findViewById(R.id.edit_subsc_card_cvv);
-        edit_card_cvv.setTag(EDIT_CARD_CVV_TAG);
-
-        Spinner spinner_months = view.findViewById(R.id.spin_subsc_card_expire_month);
-        Spinner spinner_years = view.findViewById(R.id.spin_subsc_card_expire_year);
-        btn_buy_now = view.findViewById(R.id.btn_credit_card_buy);
-        btn_buy_now.setOnClickListener(new View.OnClickListener() {
+        binding.btnCreditCardBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeFragment(SubscriptionConfirmationFragment.newInstance());
             }
         });
 
-        //initCustomKeyboard(view);
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.months_array, R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinner_months.setAdapter(adapter);
+        binding.spinSubscCardExpireMonth.setAdapter(adapter);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(),
                 R.array.years_array, R.layout.spinner_item);
         adapter2.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinner_years.setAdapter(adapter2);
+        binding.spinSubscCardExpireYear.setAdapter(adapter2);
 
+        openKeyboard();
+
+        binding.editSubscCardNumber.setTransformationMethod(null);
+        binding.editSubscCardNumber.requestFocus();
+        binding.editSubscCardNumber.addTextChangedListener(credit_card_num_watcher);
+        binding.editSubscCardNumber.addTextChangedListener(textEmptyCheck);
+
+        binding.editSubscCardCvv.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        binding.editSubscCardCvv.addTextChangedListener(textEmptyCheck);
+
+        binding.editSubscCardName.addTextChangedListener(textEmptyCheck);
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onNavigationIconClick() {
+        super.onNavigationIconClick();
+        hideKeyboard();
+        getActivity().onBackPressed();
+    }
+
+    private void openKeyboard() {
         InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-        edit_card_number.requestFocus();
-
-        edit_card_cvv.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        //edit_card_number.setOnFocusChangeListener(card_view_focus);
-        //edit_card_number.setOnTouchListener(card_view_touch);
-        edit_card_number.addTextChangedListener(credit_card_num_watcher);
-
-        //edit_card_cvv.setOnFocusChangeListener(card_view_focus);
-        //edit_card_cvv.setOnTouchListener(card_view_touch);
-
-        edit_card_number.addTextChangedListener(textEmptyCheck);
-        edit_card_cvv.addTextChangedListener(textEmptyCheck);
-        edit_card_name.addTextChangedListener(textEmptyCheck);
-
-        return view;
     }
-/*
-    void initCustomKeyboard(View view){
-        keyboard = view.findViewById(R.id.keyboard);
-        TextView k0=view.findViewById(R.id.t9_key_0);
-        TextView k1=view.findViewById(R.id.t9_key_1);
-        TextView k2=view.findViewById(R.id.t9_key_2);
-        TextView k3=view.findViewById(R.id.t9_key_3);
-        TextView k4=view.findViewById(R.id.t9_key_4);
-        TextView k5=view.findViewById(R.id.t9_key_5);
-        TextView k6=view.findViewById(R.id.t9_key_6);
-        TextView k7=view.findViewById(R.id.t9_key_7);
-        TextView k8=view.findViewById(R.id.t9_key_8);
-        TextView k9=view.findViewById(R.id.t9_key_9);
-        TextView kback=view.findViewById(R.id.t9_key_ok);
-        TextView kok=view.findViewById(R.id.t9_key_backspace);
 
-        k0.setOnClickListener(this);
-        k1.setOnClickListener(this);
-        k2.setOnClickListener(this);
-        k3.setOnClickListener(this);
-        k4.setOnClickListener(this);
-        k5.setOnClickListener(this);
-        k6.setOnClickListener(this);
-        k7.setOnClickListener(this);
-        k8.setOnClickListener(this);
-        k9.setOnClickListener(this);
-        kok.setOnClickListener(this);
-        kback.setOnClickListener(this);
-    }
-*/
     private void hideKeyboard() {
         try {
-            InputMethodManager inputmanager = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager inputmanager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputmanager != null) {
                 inputmanager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
             }
@@ -147,10 +96,12 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
 
         @Override
         public void onTextChanged(CharSequence s, int arg1, int arg2,
-                                  int arg3) { }
+                                  int arg3) {
+        }
 
         @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
 
         @Override
         public void afterTextChanged(Editable s) {
@@ -170,10 +121,10 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
 
     };
 
-    private TextWatcher textEmptyCheck= new TextWatcher() {
+    private TextWatcher textEmptyCheck = new TextWatcher() {
         @Override
         public void afterTextChanged(Editable s) {
-            btn_buy_now.setEnabled(edit_card_number.getText().toString().length() > 0 &&edit_card_cvv.getText().toString().length() > 0 && edit_card_name.getText().toString().length()>0);
+            binding.btnCreditCardBuy.setEnabled(binding.editSubscCardNumber.getText().toString().length() > 0 && binding.editSubscCardCvv.getText().toString().length() > 0 && binding.editSubscCardName.getText().toString().length() > 0);
         }
 
         @Override
@@ -187,55 +138,4 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
 
         }
     };
-
-    /*
-    private View.OnKeyListener card_name_ok_click  = new View.OnKeyListener() {
-        public boolean onKey(View v, int keyCode, KeyEvent event) {
-            if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                Toast.makeText(HelloFormStuff.this, edittext.getText(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
-            return false;
-        }
-    };
-
-
-*/
-    /*
-    @Override
-    public void onClick(View v) {
-        EditText focused_view = (EditText) getActivity().getCurrentFocus();
-        if (v.getTag() != null && "number_button".equals(v.getTag())) {
-            focused_view.append(((TextView) v).getText());
-            return;
-        }
-        switch (v.getId()) {
-            case R.id.t9_key_ok: { // handle clear button
-                keyboard.setVisibility(View.GONE);
-                if (focused_view.getTag().equals(EDIT_CARD_NUM_TAG))
-                    showSoftKeyboard(edit_card_name);
-            }
-            break;
-            case R.id.t9_key_backspace: { // handle backspace button
-                // delete one character
-                Editable editable = focused_view.getText();
-                int charCount = editable.length();
-                if (charCount > 0) {
-                    editable.delete(charCount - 1, charCount);
-                }
-            }
-            break;
-        }
-    }
-
-    private void showSoftKeyboard(View view) {
-        if(view.requestFocus()){
-            InputMethodManager imm =(InputMethodManager)
-                    getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(view,InputMethodManager.SHOW_IMPLICIT);
-        }
-    }
-*/
-
 }
-

@@ -5,21 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.adapter.CustomSettingsListAdapter;
+import com.cybercrypt.sandvmi.databinding.FragmentSettingsBinding;
 import com.cybercrypt.sandvmi.model.SettingsItem;
-import com.cybercrypt.sandvmi.ui.HomeActivity;
+import com.cybercrypt.sandvmi.ui.MainActivity;
+import com.cybercrypt.sandvmi.ui.util.FragmentUtils;
 
 import java.util.ArrayList;
 
+import static com.cybercrypt.sandvmi.ui.util.FragmentUtils.TRANSITION_NONE;
+
 public class SettingsFragment extends Fragment {
 
-    OnProfileSelectedListener callback;
+    private FragmentSettingsBinding binding;
 
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
@@ -28,27 +32,26 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_settings, container, false);
-
-        ListView mSettingListView = root.findViewById(R.id.list_settings);
+        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
 
         final ArrayList<SettingsItem> settingsMenuList=prepareSettingsMenu();
         final CustomSettingsListAdapter cAdapter=new CustomSettingsListAdapter(
                 getActivity(),
                 R.layout.custom_settings_list_item,
                 settingsMenuList);
-        mSettingListView.setAdapter(cAdapter);
+        binding.listSettings.setAdapter(cAdapter);
 
-        mSettingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listSettings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
                 if (settingsMenuList.get(position).getSettingItem().equals("Profile")){
-                    callback.onProfileSelected();
+                    FragmentUtils.replaceFragment(getActivity(), ProfileFragment.newInstance(), R.id.nav_host_fragment, true, MainActivity.PROFILETAG, FragmentUtils.TRANSITION_SLIDE_LEFT_RIGHT);
+
                 }
             }
         });
 
-        return root;
+        return binding.getRoot();
     }
 
     private ArrayList<SettingsItem> prepareSettingsMenu(){
@@ -61,13 +64,6 @@ public class SettingsFragment extends Fragment {
         return items;
     }
 
-    public interface OnProfileSelectedListener {
-        public void onProfileSelected();
-    }
-
-    public void setOnProfileSelectedListener(OnProfileSelectedListener callback) {
-        this.callback = callback;
-    }
 
 
 }

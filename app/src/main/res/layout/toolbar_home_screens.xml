@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="toolbartitle"
+            type="String"
+            />
 
-<androidx.appcompat.widget.Toolbar android:id="@+id/toolbar_subs"
+        <variable
+            name="navicon"
+            type="int"
+            />
+    </data>
+<androidx.appcompat.widget.Toolbar android:id="@+id/toolbar_home"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@android:color/transparent"
+    app:navigationIcon="@{navicon}"
     app:theme="@style/ToolbarColoredBackArrow"
-    app:popupTheme="@style/AppTheme"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:popupTheme="@style/AppTheme">
 
 
     <TextView
@@ -19,6 +30,8 @@
         android:fontFamily="@font/varela_round_regular"
         android:textSize="14sp"
         android:layout_gravity="center"
+        android:text="@{toolbartitle}"
         />
 
 </androidx.appcompat.widget.Toolbar>
+</layout>

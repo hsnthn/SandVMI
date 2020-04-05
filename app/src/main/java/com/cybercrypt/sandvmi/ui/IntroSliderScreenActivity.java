@@ -9,39 +9,28 @@ import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.ViewPager;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.adapter.SplashViewPagerAdapter;
+import com.cybercrypt.sandvmi.databinding.ActivityIntroSliderBinding;
 
 public class IntroSliderScreenActivity extends Activity {
 
-    private ViewPager viewPager;
-    private SplashViewPagerAdapter myViewPagerAdapter;
-    private LinearLayout dotsLayout;
-    private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext,btnTry7Day;
+    private ActivityIntroSliderBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro_slider);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_intro_slider);
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
-
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
-        btnNext = (Button) findViewById(R.id.btn_next);
-        btnTry7Day = (Button) findViewById(R.id.btn_trial);
-
 
         // layouts of all welcome sliders
         // add few more layouts if you want
@@ -58,26 +47,26 @@ public class IntroSliderScreenActivity extends Activity {
         // making notification bar transparent
         changeStatusBarColor();
 
-        myViewPagerAdapter = new SplashViewPagerAdapter(layouts,IntroSliderScreenActivity.this);
-        viewPager.setAdapter(myViewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+        SplashViewPagerAdapter myViewPagerAdapter = new SplashViewPagerAdapter(layouts, IntroSliderScreenActivity.this);
+        binding.viewPager.setAdapter(myViewPagerAdapter);
+        binding.viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        binding.btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int lastPage=layouts.length;
-                viewPager.setCurrentItem(lastPage);
+                binding.viewPager.setCurrentItem(lastPage);
             }
         });
 
-        btnTry7Day.setOnClickListener(new View.OnClickListener() {
+        binding.btnTrial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchHomeScreen();
             }
         });
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // checking for last page
@@ -85,7 +74,7 @@ public class IntroSliderScreenActivity extends Activity {
                 int current = getItem(+1);
                 if (current < layouts.length) {
                     // move to next screen
-                    viewPager.setCurrentItem(current);
+                    binding.viewPager.setCurrentItem(current);
                 } else {
                     launchSubscriptionScreen();
                 }
@@ -94,18 +83,18 @@ public class IntroSliderScreenActivity extends Activity {
     }
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        TextView[] dots = new TextView[layouts.length];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
 
-        dotsLayout.removeAllViews();
+        binding.layoutDots.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);
             dots[i].setTextColor(colorsInactive[currentPage]);
-            dotsLayout.addView(dots[i]);
+            binding.layoutDots.addView(dots[i]);
         }
 
         if (dots.length > 0)
@@ -113,12 +102,12 @@ public class IntroSliderScreenActivity extends Activity {
     }
 
     private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
+        return binding.viewPager.getCurrentItem() + i;
     }
 
     private void launchHomeScreen() {
-        Intent i = new Intent(IntroSliderScreenActivity.this, HomeActivity.class);
-        i.putExtra("fragment", HomeActivity.LOGINTAG);
+        Intent i = new Intent(IntroSliderScreenActivity.this, MainActivity.class);
+        i.putExtra("fragment", MainActivity.LOGINTAG);
         startActivity(i);
         finish();
     }
@@ -138,14 +127,14 @@ public class IntroSliderScreenActivity extends Activity {
             // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
-                btnNext.setText(getString(R.string.subscription_home_button_text));
-                btnSkip.setVisibility(View.INVISIBLE);
-                btnTry7Day.setVisibility(View.VISIBLE);
+                binding. btnNext.setText(getString(R.string.subscription_home_button_text));
+                binding. btnSkip.setVisibility(View.INVISIBLE);
+                binding.btnTrial.setVisibility(View.VISIBLE);
             } else {
                 // still pages are left
-                btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.VISIBLE);
-                btnTry7Day.setVisibility(View.INVISIBLE);
+                binding.btnNext.setText(getString(R.string.next));
+                binding.btnTrial.setVisibility(View.VISIBLE);
+                binding.btnTrial.setVisibility(View.INVISIBLE);
 
             }
         }

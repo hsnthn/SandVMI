@@ -9,17 +9,19 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.adapter.CustomHomeVMListAdapter;
+import com.cybercrypt.sandvmi.databinding.FragmentHomeBinding;
 import com.cybercrypt.sandvmi.model.VMListItem;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private ListView mVMListView;
+    private FragmentHomeBinding binding;
     private ArrayList<VMListItem> dataList;
 
     private String dummytitle1,dummytitle2,lv1,lv2;
@@ -30,21 +32,20 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
         setDummys();
         dataList = new ArrayList<VMListItem>();
         dataList.add(new VMListItem(dummytitle1, lv1,R.drawable.ic_screen_lock));
         dataList.add(new VMListItem(dummytitle1,lv2, R.drawable.ic_screen_lock));
 
-        mVMListView = root.findViewById(R.id.list_vm);
         final CustomHomeVMListAdapter cAdapter=new CustomHomeVMListAdapter(
                 getActivity(),
                 R.layout.custom_home_vm_item,
                 dataList);
-        mVMListView.setAdapter(cAdapter);
+        binding.listVm.setAdapter(cAdapter);
 
-        mVMListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listVm.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
                 Dialog filterDialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
@@ -55,7 +56,7 @@ public class HomeFragment extends Fragment {
         });
 
 
-        return root;
+        return binding.getRoot();
     }
 
     private void setDummys(){
