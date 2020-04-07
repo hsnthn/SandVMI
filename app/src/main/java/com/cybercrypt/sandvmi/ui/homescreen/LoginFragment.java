@@ -10,21 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
+import com.cybercrypt.sandvmi.databinding.FragmentLoginBinding;
 import com.cybercrypt.sandvmi.ui.util.Utils;
 
 public class LoginFragment extends Fragment {
 
-    private EditText edit_user,edit_pass;
-    private Button btn_login;
+    private FragmentLoginBinding binding;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -32,31 +31,25 @@ public class LoginFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
 
-        View root = inflater.inflate(R.layout.fragment_login, container, false);
-
-        edit_user = root.findViewById(R.id.edit_lo_uname);
-        edit_pass = root.findViewById(R.id.edit_lo_pass);
-        btn_login = root.findViewById(R.id.btn_lo_login);
-
-        edit_pass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        binding.editLoPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    edit_pass.clearFocus();
-                    InputMethodManager imm = (InputMethodManager)getActivity(). getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(edit_pass.getWindowToken(), 0);
+                    binding.editLoPass.clearFocus();
+                    hideKeyboard();
                 }
                 return false;
             }
         });
 
-        edit_user.addTextChangedListener(textEmptyCheck);
-        edit_pass.addTextChangedListener(textEmptyCheck);
-        edit_user.setOnFocusChangeListener(focusChangeListener);
-        edit_pass.setOnFocusChangeListener(focusChangeListener);
+        binding.editLoUname.addTextChangedListener(textEmptyCheck);
+        binding.editLoPass.addTextChangedListener(textEmptyCheck);
+        binding.editLoUname.setOnFocusChangeListener(focusChangeListener);
+        binding.editLoPass.setOnFocusChangeListener(focusChangeListener);
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        binding.btnLoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showErrors();
@@ -64,19 +57,18 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        return root;
+        return binding.getRoot();
     }
 
     private void showErrors(){
-        if (edit_user.isFocused()) edit_user.clearFocus();
-        if (edit_pass.isFocused()) edit_pass.clearFocus();
+        if (binding.editLoUname.isFocused()) binding.editLoUname.clearFocus();
+        if (binding.editLoPass.isFocused()) binding.editLoPass.clearFocus();
 
-        InputMethodManager imm = (InputMethodManager)getActivity(). getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(edit_pass.getWindowToken(), 0);
-        LinearLayout linearLayout = getActivity().findViewById(R.id.lay_login);
-        Utils.showSnackbar(getActivity(),linearLayout, getResources().getString(R.string.error_login));
-        edit_pass.setBackgroundResource(R.drawable.bg_error_edit_text);
-        edit_user.setBackgroundResource(R.drawable.bg_error_edit_text);
+        hideKeyboard();
+
+        Utils.showSnackbar(getActivity(),binding.layLogin, getResources().getString(R.string.error_login));
+        binding.editLoPass.setBackgroundResource(R.drawable.bg_error_edit_text);
+        binding.editLoUname.setBackgroundResource(R.drawable.bg_error_edit_text);
     }
 
     private View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
@@ -88,11 +80,10 @@ public class LoginFragment extends Fragment {
         }
     };
 
-
     private TextWatcher textEmptyCheck= new TextWatcher() {
         @Override
         public void afterTextChanged(Editable s) {
-            btn_login.setEnabled(edit_user.getText().toString().length() > 0 && edit_pass.getText().toString().length()>0);
+            binding.btnLoLogin.setEnabled(binding.editLoUname.getText().toString().length() > 0 && binding.editLoPass.getText().toString().length()>0);
         }
 
         @Override
@@ -106,5 +97,10 @@ public class LoginFragment extends Fragment {
 
         }
     };
+
+    private void hideKeyboard(){
+        InputMethodManager imm = (InputMethodManager)getActivity(). getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(binding.editLoPass.getWindowToken(), 0);
+    }
 
 }

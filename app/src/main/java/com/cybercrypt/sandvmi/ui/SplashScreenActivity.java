@@ -12,8 +12,6 @@ import com.cybercrypt.sandvmi.R;
 
 public class SplashScreenActivity extends Activity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 1000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +21,10 @@ public class SplashScreenActivity extends Activity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
+        int SPLASH_DISPLAY_LENGTH = 1000;
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                /* Create an Intent that will start the Menu-Activity. */
                 Intent mainIntent = new Intent(SplashScreenActivity.this,IntroSliderScreenActivity.class);
                 startActivity(mainIntent);
                 finish();
