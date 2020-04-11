@@ -10,8 +10,8 @@
     <TextView
         android:layout_marginStart="16dp"
         android:id="@+id/txt_vm_title"
-        style="@style/TitleTextViewStyle"
-        android:textSize="18sp"
+        style="@style/SandTextView.VarelaRound.Title2"
+        android:textColor="@color/primary_text_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -22,7 +22,8 @@
         android:layout_marginStart="16dp"
         android:layout_below="@+id/txt_vm_title"
         android:id="@+id/txt_vm_lastvisited"
-        style="@style/LightTextViewStyle"
+        style="@style/SandTextView.RobotoLight.Small"
+        android:textColor="@color/secondary_text_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

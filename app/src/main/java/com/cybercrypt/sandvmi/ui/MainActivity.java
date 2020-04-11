@@ -29,6 +29,7 @@ import com.cybercrypt.sandvmi.ui.homescreen.LoginFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.SettingsFragment;
 import com.cybercrypt.sandvmi.ui.homescreen.SignupFragment;
 import com.cybercrypt.sandvmi.ui.util.FragmentUtils;
+import com.cybercrypt.sandvmi.ui.util.Utils;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -56,10 +57,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
-
         binding.appBar.toolbar.setNavicon(R.drawable.ic_menu_white);
         binding.appBar.toolbar.setToolbartitle(getResources().getString(R.string.subscription_choose_payment_plan_title));
         binding.appBar.toolbar.toolbarHome.bringToFront();
@@ -71,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mDrawerToggle.syncState();
 
         dataList = new ArrayList<DrawerItem>();
-        dataList.add(new DrawerItem(getString(R.string.menu_home), R.drawable.ic_home_gray,HOMETAG));
+        dataList.add(new DrawerItem(getString(R.string.menu_home), R.drawable.ic_home_white,HOMETAG));
         //dataList.add(new DrawerItem(getString(R.string.menu_profile), R.drawable.ic_profile_gray,PROFILETAG));
         dataList.add(new DrawerItem(getString(R.string.menu_setting), R.drawable.ic_settings_gray,SETTINGTAG));
         dataList.add(new DrawerItem(getString(R.string.menu_about), R.drawable.ic_info_outline_gray,ABOUTTAG));
@@ -237,5 +234,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         changeFragment(ForgotPasswordFragment.newInstance(),FORGOTPASSWORDTAG,false);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Utils.hideNavigations(this);
+    }
 
 }

@@ -2,7 +2,7 @@
 <LinearLayout android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:layout_height="60dp"
+    android:layout_height="80dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
@@ -15,7 +15,8 @@
         android:id="@+id/txt_profile_list_text"
         android:layout_marginStart="20dp"
         android:layout_gravity="center"
-        style="@style/NormalTextViewStyle"
+        style="@style/SandTextView.RobotoNormal.Medium"
+        android:textColor="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="@string/profile_contact_text"

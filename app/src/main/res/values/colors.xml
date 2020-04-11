@@ -6,22 +6,19 @@
 
     <color name="bg_screen">#182742</color>
     <color name="bg_nav_bar">#0C131C</color>
-    <color name="dot_light_screen">#E4E4E5</color>
+    <color name="dot_light_screen">#33E4E4E5</color>
     <color name="dot_dark_screen">#5FB1F1</color>
-    <color name="splash_button">#454CB8</color>
-    <color name="splash_button_disabled">#546170</color>
+
     <color name="float_action_button">#5FB1F1</color>
 
     <color name="primary_text_color">#F7F8FA</color>
     <color name="secondary_text_color">#DDE0E3</color>
-    <color name="subscription_hint_color">#40FFFFFF</color>
+    <color name="hint_color">#69FFFFFF</color>
     <color name="edit_cursor_color">#6E52C3</color>
-
 
     <color name="forms_background">#0D0E31</color>
     <color name="form_item_background">#13154E</color>
     <color name="bg_error">#DD5A59</color>
-
 
     <array name="array_dot_active">
         <item>@color/dot_dark_screen</item>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <LinearLayout
     android:id="@+id/lay_login"
@@ -10,8 +11,8 @@
     android:focusableInTouchMode="true"
     android:layout_height="match_parent">
 
-    <TextView
-        style="@style/TitleTextViewStyle"
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
+        style="@style/SandTextView.VarelaRound.Title1"
         android:text="@string/login_title"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -19,7 +20,7 @@
         android:gravity="center"
         />
 
-    <EditText
+    <com.cybercrypt.sandvmi.ui.widget.SandEditText
         android:id="@+id/edit_lo_uname"
         style="@style/EditTextStyle"
         android:layout_marginTop="24dp"
@@ -28,9 +29,10 @@
         android:hint="@string/signup_edit2_hint"
         android:drawablePadding="10dp"
         android:imeOptions="actionNext"
-
+        android:autofillHints="AUTOFILL_HINT_USERNAME"
         />
-    <EditText
+
+    <com.cybercrypt.sandvmi.ui.widget.SandEditText
         android:id="@+id/edit_lo_pass"
         style="@style/EditTextStyle"
         android:layout_marginTop="8dp"
@@ -39,11 +41,13 @@
         android:drawablePadding="10dp"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:autofillHints="AUTOFILL_HINT_PASSWORD"
         />
 
-    <TextView
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
         android:id="@+id/txt_lo_forgot"
-        style="@style/LightTextViewStyle"
+        style="@style/SandTextView.RobotoNormal.Medium"
+        android:textColor="@color/secondary_text_color"
         android:text="@string/login_forgot_pass"
         android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
@@ -52,6 +56,7 @@
         android:focusable="true"
         android:onClick="ForgotPasswordClick"
         android:gravity="center"
+        app:applyLetterSpace="true"
         />
 
     <Button
@@ -63,17 +68,19 @@
         android:text="@string/login_btn_txt"
         />
 
-    <TextView
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
         android:onClick="SignupClick"
         android:clickable="true"
         android:layout_marginTop="24dp"
-        style="@style/NormalTextViewStyle"
-        android:textSize="18sp"
+        style="@style/SandTextView.RobotoNormal.Medium"
+        android:textColor="@color/secondary_text_color"
         android:text="@string/login_signup"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
-        android:focusable="true" />
+        android:focusable="true"
+        app:applyLetterSpace="true"
+        />
 
 </LinearLayout>
 </layout>

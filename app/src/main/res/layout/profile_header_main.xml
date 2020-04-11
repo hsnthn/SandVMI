@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/loggeduser"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_user"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/im_profile_icon"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="22dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="24dp"
-        >
+        android:src="@drawable/ic_profile_gray_36"/>
 
+<LinearLayout android:id="@+id/loggeduser"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_toEndOf="@+id/im_profile_icon"
+    android:layout_centerVertical="true">
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         android:id="@+id/txt_fullname"
+
         style="@style/SandTextView.VarelaRound.Title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nav_header_title"
         app:applyLetterSpace="true"
-         />
+        />
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         android:id="@+id/txt_plan"
         style="@style/SandTextView.RobotoNormal.Small"
         android:textColor="@color/hint_color"
         android:text="@string/nav_header_subtitle" />
-    </LinearLayout>
 
+</LinearLayout>
 </RelativeLayout>

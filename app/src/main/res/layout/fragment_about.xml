@@ -9,7 +9,7 @@
     <TextView
         android:textColor="@color/primary_text_color"
         android:text="@string/about_screen_text"
-        style="@style/LightTextViewStyle"
+        style="@style/SandTextView.RobotoNormal.Medium"
         android:layout_marginTop="90dp"
         android:paddingLeft="56dp"
         android:paddingRight="56dp"

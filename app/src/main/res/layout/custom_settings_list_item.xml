@@ -18,7 +18,8 @@
 
     <TextView
         android:layout_marginTop="16dp"
-        style="@style/NormalTextViewStyle"
+        style="@style/SandTextView.RobotoNormal.Medium"
+        android:textColor="@android:color/white"
         android:layout_toEndOf="@+id/im_setting_icon"
         android:id="@+id/txt_settings_title"
         android:layout_width="match_parent"
@@ -30,8 +31,8 @@
     <TextView
         android:layout_toEndOf="@+id/im_setting_icon"
         android:id="@+id/txt_settings_info"
-        style="@style/LightTextViewStyle"
-        android:textSize="14sp"
+        style="@style/SandTextView.RobotoNormal.Small"
+        android:textColor="@color/hint_color"
         android:layout_below="@+id/txt_settings_title"
         tools:text="Contact details, preferences, etc."
         android:layout_marginBottom="16dp"

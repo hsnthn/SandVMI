@@ -4,7 +4,8 @@
 
 <RelativeLayout
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    >
 <FrameLayout
     android:layout_alignParentTop="true"
     android:id="@+id/home_new"
@@ -13,18 +14,19 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ImageStyle"
+        android:layout_width="match_parent"
         android:src="@drawable/ic_home_screen" />
 
-    <TextView
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
         android:text="@string/home_screen_text"
-        style="@style/LightTextViewStyle"
+        style="@style/SandTextView.RobotoLight.Medium"
+        android:textColor="@color/secondary_text_color"
+        app:applyLetterSpace="true"
         android:layout_marginTop="447dp"
         android:paddingLeft="56dp"
         android:paddingRight="56dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal"
         android:layout_height="wrap_content"/>
 

@@ -24,10 +24,13 @@
 
     <TextView
         android:id="@+id/txt_drawer"
-        style="@style/LightTextViewStyle"
+        style="@style/SandTextView.RobotoNormal.Medium"
+        android:textColor="#80FFFFFF"
+        android:textStyle="normal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+
         />
 </LinearLayout>
 </LinearLayout>

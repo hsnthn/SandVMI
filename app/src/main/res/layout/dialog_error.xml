@@ -13,7 +13,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="14dp"
         tools:text="The username or password is incorrect."
-        style="@style/LightTextViewStyle"
+        style="@style/SandTextView.RobotoNormal.Small"
         android:layout_width="wrap_content"
         android:layout_centerVertical="true"
         android:textColor="#ffffff" />

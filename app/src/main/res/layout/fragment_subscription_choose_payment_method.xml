@@ -7,14 +7,12 @@
 
     <ImageView
         android:layout_marginTop="32dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
+        style="@style/ImageStyle"
         android:src="@drawable/ic_subscription"
         />
 
-    <TextView
-        style="@style/TitleTextViewStyle"
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
+        style="@style/SandTextView.VarelaRound.Title1"
         android:layout_marginTop="279dp"
         android:gravity="center_horizontal"
         android:text="@string/subscription_choose_plan_sub_title" />
@@ -43,6 +41,7 @@
             android:layout_marginStart="10dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:textSize="@dimen/large_text_size"
             />
 
 
@@ -71,6 +70,7 @@
             android:layout_marginStart="10dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:textSize="@dimen/large_text_size"
             />
 
 
@@ -85,8 +85,6 @@
         android:layout_marginTop="464dp"
         android:text="@string/subscription_continue"
         />
-
-
 
 </FrameLayout>
 </layout>

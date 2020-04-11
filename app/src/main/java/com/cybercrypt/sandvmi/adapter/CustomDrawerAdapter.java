@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.TextViewCompat;
 
 import com.cybercrypt.sandvmi.R;
@@ -66,13 +68,12 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
         drawerHolder.ll.setTag(dItem.getLayout_tag());
 
         if(mSelectedItem == position) {
-            drawerHolder.icon.setImageDrawable(view.getResources().getDrawable(
-                    dItem.getImgResID()));
-            TextViewCompat.setTextAppearance(drawerHolder.ItemName, R.style.NormalTextViewStyle);
-            drawerHolder.ll.setBackground(view.getResources().getDrawable(R.drawable.bg_drawer_item_selected));
+            TextViewCompat.setTextAppearance(drawerHolder.ItemName, R.style.SandTextView_RobotoSelected);
+            drawerHolder.ItemName.setTextColor(ContextCompat.getColor(context, android.R.color.white));
+            drawerHolder.ll.setBackground(ContextCompat.getDrawable(context,R.drawable.bg_drawer_item_selected));
         }else{
-            TextViewCompat.setTextAppearance(drawerHolder.ItemName, R.style.LightTextViewStyle);
-            drawerHolder.ll.setBackgroundColor(view.getResources().getColor(android.R.color.transparent));
+            TextViewCompat.setTextAppearance(drawerHolder.ItemName, R.style.SandTextView_RobotoLight_Medium);
+            drawerHolder.ll.setBackgroundColor(ContextCompat.getColor(context,android.R.color.transparent));
 
         }
 
