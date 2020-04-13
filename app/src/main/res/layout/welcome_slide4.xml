@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/bg_screen"
+    android:orientation="horizontal"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
     <ImageView
-        android:layout_marginTop="80dp"
         android:id="@+id/slogo"
         android:src="@drawable/ic_multipledevice"
         style="@style/ImageStyle"
+        android:layout_marginBottom="22dp"
+        android:layout_height="250dp"
+
         />
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         style="@style/SandTextView.VarelaRound.Title1"
         android:gravity="center_horizontal"
         android:text="@string/splash4_title"
-        android:layout_marginTop="314dp"
         android:textColor="@color/primary_text_color"
         app:applyLetterSpace="true"
+        android:layout_marginBottom="16dp"
 
         />
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         style="@style/SandTextView.RobotoLight.Medium"
-        android:layout_marginTop="354dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:gravity="center_horizontal"
@@ -35,4 +42,6 @@
 
         />
 
-</FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

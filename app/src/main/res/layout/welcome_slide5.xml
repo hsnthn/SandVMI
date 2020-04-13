@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:background="@color/bg_screen"
+    android:orientation="horizontal"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         style="@style/SandTextView.VarelaRound.Title1"
         android:gravity="center"
         android:text="@string/subscription_home_title"
-        android:layout_marginTop="160dp"
         app:applyLetterSpace="true"
         android:textColor="@color/primary_text_color"
+        android:layout_marginBottom="32dp"
         />
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         style="@style/SandTextView.RobotoLight.Medium"
-        android:layout_marginTop="216dp"
         android:text="@string/subscription_home_item_1"
         android:drawablePadding="16dp"
         android:drawableStart="@drawable/ic_subscription_check"
         android:layout_marginStart="20dp"
         app:applyLetterSpace="true"
         android:textColor="@color/secondary_text_color"
+        android:layout_marginBottom="24dp"
         />
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         style="@style/SandTextView.RobotoLight.Medium"
-        android:layout_marginTop="264dp"
         android:text="@string/subscription_home_item_2"
         android:drawablePadding="16dp"
         android:drawableStart="@drawable/ic_subscription_check"
         android:layout_marginStart="20dp"
         app:applyLetterSpace="true"
         android:textColor="@color/secondary_text_color"
+        android:layout_marginBottom="24dp"
+
         />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="312dp"
         android:layout_marginStart="20dp"
         android:layout_height="wrap_content">
 
@@ -61,4 +68,6 @@
 
     </RelativeLayout>
 
-</FrameLayout>
+</LinearLayout>
+
+    </LinearLayout>
