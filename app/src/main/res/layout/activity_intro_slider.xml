@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -15,8 +16,8 @@
         android:id="@+id/layoutDots"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dots_height"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/dots_margin_bottom"
+        android:layout_above="@+id/btn_next"
+        android:layout_marginBottom="40dp"
         android:gravity="center"
         android:orientation="horizontal" />
 
@@ -26,28 +27,38 @@
         style="@style/ButtonStyle"
         android:text="@string/next"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="24dp"
+        android:focusable="true" />
 
-    <Button
-        style="@style/ActionBoldTextViewStyle"
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
+        android:clickable="true"
+        style="@style/SandTextView.RobotoBold.Medium"
+        android:textColor="@color/secondary_text_color"
         android:id="@+id/btn_skip"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:background="@null"
+        android:textStyle="bold"
         android:text="@string/skip"
         android:textSize="@dimen/medium_text_size"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="24dp"
+        app:applyLetterSpace="true"
+        android:gravity="center_horizontal"
+        android:focusable="true" />
 
-    <Button
-        style="@style/ActionBoldTextViewStyle"
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
+        android:clickable="true"
+        style="@style/SandTextView.RobotoBold.Medium"
+        android:textColor="@color/secondary_text_color"
         android:id="@+id/btn_trial"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:background="@null"
         android:text="@string/trial"
-        android:textSize="@dimen/medium_text_size"
         android:visibility="invisible"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="24dp"
+        app:applyLetterSpace="true"
+        android:gravity="center_horizontal"
+        android:focusable="true" />
 
 </RelativeLayout>
 </layout>

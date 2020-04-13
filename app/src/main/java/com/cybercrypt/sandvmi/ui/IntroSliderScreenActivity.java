@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.adapter.SplashViewPagerAdapter;
 import com.cybercrypt.sandvmi.databinding.ActivityIntroSliderBinding;
+import com.cybercrypt.sandvmi.ui.util.Utils;
 
 public class IntroSliderScreenActivity extends Activity {
 
@@ -27,10 +29,6 @@ public class IntroSliderScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro_slider);
-
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
 
         // layouts of all welcome sliders
         // add few more layouts if you want
@@ -133,7 +131,7 @@ public class IntroSliderScreenActivity extends Activity {
             } else {
                 // still pages are left
                 binding.btnNext.setText(getString(R.string.next));
-                binding.btnTrial.setVisibility(View.VISIBLE);
+                binding.btnSkip.setVisibility(View.VISIBLE);
                 binding.btnTrial.setVisibility(View.INVISIBLE);
 
             }
@@ -141,7 +139,7 @@ public class IntroSliderScreenActivity extends Activity {
 
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {
-
+            Log.w("scrold","scroled");
         }
 
         @Override
@@ -156,5 +154,11 @@ public class IntroSliderScreenActivity extends Activity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Utils.hideNavigations(this);
     }
 }

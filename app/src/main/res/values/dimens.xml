@@ -10,23 +10,18 @@
     <dimen name="dots_margin_bottom">200dp</dimen>
 
     <!-- Text Dimensions -->
-    <dimen name="big_title_size">20sp</dimen>
-    <dimen name="default_title_size">18sp</dimen>
+
+    <dimen name="title_size">20sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
     <dimen name="medium_text_size">16sp</dimen>
     <dimen name="small_text_size">14sp</dimen>
-
-    <dimen name="splash_title_size">24sp</dimen>
-    <dimen name="splash_text_size">16sp</dimen>
-
-
-    <dimen name="intro_slide_title">20sp</dimen>
-    <dimen name="intro_slide_text">16sp</dimen>
-
-    <dimen name="subscription_title">20sp</dimen>
-    <dimen name="subscription_text">16sp</dimen>
+    <dimen name="xsmall_text_size">12sp</dimen>
 
     <dimen name="status_bar_height">25dip</dimen>
     <dimen name="keyboard_min_height">128dp</dimen>
+
+
+    <dimen name="letter_space">0.08dp</dimen>
 
 
 </resources>

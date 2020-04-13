@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/bg_screen"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:layout_marginTop="63dp"
         android:id="@+id/slogo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
+        style="@style/ImageStyle"
         android:src="@drawable/ic_bulletproof"
          />
 
-    <TextView
-        style="@style/TitleTextViewStyle"
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
+        style="@style/SandTextView.VarelaRound.Title1"
         android:layout_marginTop="314dp"
         android:gravity="center_horizontal"
         android:text="@string/splash1_title"
+        app:applyLetterSpace="true"
+        android:textColor="@color/primary_text_color"
         />
 
-    <TextView
-        style="@style/LightTextViewStyle"
+    <com.cybercrypt.sandvmi.ui.widget.SandTextView
+        style="@style/SandTextView.RobotoLight.Medium"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:gravity="center_horizontal"
         android:layout_marginTop="354dp"
         android:text="@string/splash1_content"
+        app:applyLetterSpace="true"
+        android:textColor="@color/secondary_text_color"
         />
 
 </FrameLayout>

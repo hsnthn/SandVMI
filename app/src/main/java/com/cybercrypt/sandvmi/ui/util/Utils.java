@@ -1,5 +1,6 @@
 package com.cybercrypt.sandvmi.ui.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,33 +19,33 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class Utils {
 
-    public static void Show(Context cont, String durum){
+    public static void Show(Context cont, String durum) {
         Toast.makeText(cont, durum, Toast.LENGTH_SHORT).show();
     }
-    public static boolean checkEmailPattern(String mail){
+
+    public static boolean checkEmailPattern(String mail) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        return  mail.trim().matches(emailPattern);
+        return mail.trim().matches(emailPattern);
     }
 
-    public static boolean checkUserNamePattern(String uname){
+    public static boolean checkUserNamePattern(String uname) {
         String unamePattern = "^[a-z0-9_-]{3,15}$";
-        return  uname.trim().matches(unamePattern);
+        return uname.trim().matches(unamePattern);
     }
 
-    public static boolean checkPasswordPattern(String pass){
+    public static boolean checkPasswordPattern(String pass) {
         String passPattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-        return  pass.trim().matches(passPattern);
+        return pass.trim().matches(passPattern);
     }
 
 
-
-    public static void showSnackbar(Context context,View view, String errorText) { // Create the Snackbar
+    public static void showSnackbar(Context context, View view, String errorText) { // Create the Snackbar
 
         final Snackbar snackbar = Snackbar.make(view, "", Snackbar.LENGTH_INDEFINITE);
         Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
         layout.setPadding(0, 0, 0, 0);
         // Inflate your custom view with an Edit Text
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View snackView = inflater.inflate(R.layout.dialog_error, null);
         // custom_snac_layout is your custom xml
 
@@ -64,6 +65,18 @@ public class Utils {
         layout.addView(snackView, 0);
         snackbar.show();
 
+    }
+
+
+    public static void hideNavigations(Activity context) {
+        View decorView = context.getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
+       // View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
     }
 
 

@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/Theme1colorPrimary</item>
         <item name="colorPrimaryDark">@color/Theme1colorPrimaryDark</item>
         <item name="colorAccent">@color/Theme1colorAccent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -45,66 +46,95 @@
         <item name="android:tag">number_button</item>
     </style>
 
-    <!-- subscription payment texts -->
-    <style name="NormalTextViewStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@android:color/white</item>
+    <style name="SandTextView" parent="@android:style/Widget.TextView">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textSize">@dimen/small_text_size</item>
-
-    </style>
-
-    <style name="TitleTextViewStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">#F7F8FA</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:fontFamily">@font/varela_round_regular</item>
-        <item name="android:textSize">@dimen/big_title_size</item>
-        <item name="android:letterSpacing">0.08</item>
-
-    </style>
-
-    <style name="LightTextViewStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/secondary_text_color</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:fontFamily">@font/roboto_ligth</item>
-        <item name="android:textSize">@dimen/medium_text_size</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+
+    <!-- Titles -->
+    <style name="SandTextView.VarelaRound" >
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:fontFamily">@font/varela_round_regular_20</item>
         <item name="android:letterSpacing">0.08</item>
     </style>
 
-    <style name="ActionBoldTextViewStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/secondary_text_color</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
+    <style name="SandTextView.VarelaRound.Title1"> <!-- 20sp -->
+        <item name="android:textSize">@dimen/title_size</item>
+    </style>
+
+    <style name="SandTextView.VarelaRound.Title2"> <!-- 18sp -->
+        <item name="android:textSize">@dimen/large_text_size</item>
+    </style>
+
+    <style name="SandTextView.VarelaRound.Small"> <!-- 14sp -->
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+    <!-- Titles -->
+
+
+    <style name="SandTextView.RobotoBold" >
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">@dimen/medium_text_size</item>
-
     </style>
 
-    <style name="ActionNormalTextViewStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/secondary_text_color</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
+    <style name="SandTextView.RobotoNormal" >
         <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="SandTextView.RobotoSelected" >
+        <item name="android:fontFamily">@font/roboto_w500</item>
         <item name="android:textSize">@dimen/medium_text_size</item>
     </style>
 
+    <style name="SandTextView.RobotoLight" >
+        <item name="android:fontFamily">@font/roboto_w300</item>
+    </style>
+
+    <style name="SandTextView.RobotoLight.Medium"> <!-- 16sp -->
+        <item name="android:textSize">@dimen/medium_text_size</item>
+    </style>
+
+    <style name="SandTextView.RobotoLight.Small"> <!-- 14sp -->
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="SandTextView.RobotoNormal.Large"> <!-- 18sp -->
+        <item name="android:textSize">@dimen/large_text_size</item>
+    </style>
+
+    <style name="SandTextView.RobotoNormal.Medium"> <!-- 16sp -->
+        <item name="android:textSize">@dimen/medium_text_size</item>
+    </style>
+
+
+    <style name="SandTextView.RobotoBold.Medium"> <!-- 16sp -->
+        <item name="android:textSize">@dimen/medium_text_size</item>
+    </style>
+
+    <style name="SandTextView.RobotoNormal.Small"> <!-- 14sp -->
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="SandTextView.RobotoNormal.Xsmall"> <!-- 12sp -->
+        <item name="android:textSize">@dimen/xsmall_text_size</item>
+    </style>
 
     <style name="EditTextStyle" parent="@android:style/Widget.EditText">
         <item name="android:background">@drawable/bg_edit_text</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:fontFamily">@font/roboto_w300</item>
         <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
         <item name="android:textColorHint">#ABABB6</item>
         <item name="android:textCursorDrawable">@drawable/custom_edit_cursor</item>
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
     </style>
 
     <style name="ButtonStyle" parent="@android:style/Widget.Button">
@@ -122,7 +152,6 @@
         <item name="android:popupBackground">@color/form_item_background</item>
         <item name="android:spinnerMode">dropdown</item>
         <item name="android:dropDownVerticalOffset">50dp</item>
-
     </style>
 
     <style name="SpinnerTheme.DropDown">
@@ -146,6 +175,13 @@
         <item name="android:windowIsFloating">false</item>
     </style>
 
+
+    <style name="ImageStyle" >
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
 
 
 </resources>

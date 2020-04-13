@@ -16,9 +16,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionCreditCardDetailsBinding;
-import com.cybercrypt.sandvmi.ui.SubscriptionScreenActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
-import com.cybercrypt.sandvmi.ui.util.OnNavigationIconClick;
 
 public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
 

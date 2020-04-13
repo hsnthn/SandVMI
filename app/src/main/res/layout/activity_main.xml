@@ -5,7 +5,6 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
     <include
@@ -35,9 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/nav_header_margin_height" />
 
-        <TextView
+        <com.cybercrypt.sandvmi.ui.widget.SandTextView
             android:id="@+id/btn_sing_out"
-            style="@style/LightTextViewStyle"
+            style="@style/SandTextView.RobotoNormal.Medium"
+            android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_gravity="bottom"
             android:layout_marginBottom="24dp"
@@ -61,11 +61,14 @@
                 android:layout_height="50dp"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/sign_up" />
 
-            <TextView
+            <com.cybercrypt.sandvmi.ui.widget.SandTextView
                 android:id="@+id/btn_sing_in"
-                style="@style/LightTextViewStyle"
+                style="@style/SandTextView.RobotoNormal.Medium"
+                android:textColor="@android:color/white"
                 android:onClick="LoginClick"
                 android:layout_width="match_parent"
                 android:layout_gravity="bottom"
