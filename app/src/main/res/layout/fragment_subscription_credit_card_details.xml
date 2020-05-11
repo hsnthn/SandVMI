@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 <FrameLayout xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/bg_screen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_marginTop="?attr/actionBarSize"
+
+    android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/subsc_credit_card_txt_1"

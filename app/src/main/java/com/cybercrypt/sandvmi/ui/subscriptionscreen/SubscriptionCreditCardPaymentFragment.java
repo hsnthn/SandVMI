@@ -17,8 +17,9 @@ import androidx.databinding.DataBindingUtil;
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionCreditCardDetailsBinding;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
+import com.cybercrypt.sandvmi.ui.util.BaseActivity;
 
-public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
+public class SubscriptionCreditCardPaymentFragment extends BaseFragment {
 
     private FragmentSubscriptionCreditCardDetailsBinding binding;
 
@@ -33,11 +34,12 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
 
 
         setToolbarTitle(getResources().getString(R.string.subscription_choose_payment_plan_title));
-        toolbarNavIcon(true);
+        setToolbarIcon(BaseFragment.BACK_ICON);
 
         binding.btnCreditCardBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideKeyboard();
                 changeFragment(SubscriptionConfirmationFragment.newInstance());
             }
         });
@@ -78,16 +80,6 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment  {
         imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
-    private void hideKeyboard() {
-        try {
-            InputMethodManager inputmanager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (inputmanager != null) {
-                inputmanager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
-            }
-        } catch (Exception var2) {
-        }
-
-    }
 
 
     private TextWatcher credit_card_num_watcher = new TextWatcher() {

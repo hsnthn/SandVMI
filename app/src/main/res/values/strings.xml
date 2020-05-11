@@ -80,7 +80,7 @@
     <string name="subscription_credit_text_4">Security Code</string>
     <string name="welcome_text">Welcome</string>
     <string name="confirmation_btn_text">Enter Sand Home</string>
-    <string name="home_screen_text">Your Virtual Device(s) will appear here once created.</string>
+    <string name="home_screen_text">Your Virtual Device will appear here once created.</string>
     <string name="home_screen_button_text">Create your Virtual Device</string>
     <string name="sign_out">Sign Out</string>
     <string name="sign_in">Sign In</string>
@@ -110,6 +110,9 @@
 
     <string name="error_login">The username or password is incorrect.</string>
     <string name="trial">Already have an account? Sign in</string>
+    <string name="pincode_title">Enter Pin Code</string>
+    <string name="success_signup">You have signed up succesfully.</string>
+    <string name="error_internet_connection">No internet connection</string>
 
     <string-array name="months_array">
         <item>01</item>

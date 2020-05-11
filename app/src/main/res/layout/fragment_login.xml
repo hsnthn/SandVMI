@@ -4,7 +4,6 @@
 
 <LinearLayout
     android:id="@+id/lay_login"
-    android:background="@color/bg_screen"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:focusable="true"

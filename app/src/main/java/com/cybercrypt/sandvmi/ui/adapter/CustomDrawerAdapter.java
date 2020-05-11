@@ -1,4 +1,4 @@
-package com.cybercrypt.sandvmi.adapter;
+package com.cybercrypt.sandvmi.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,11 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.TextViewCompat;
 
 import com.cybercrypt.sandvmi.R;
-import com.cybercrypt.sandvmi.model.DrawerItem;
+import com.cybercrypt.sandvmi.data.local.model.DrawerItem;
 
 import java.util.List;
 

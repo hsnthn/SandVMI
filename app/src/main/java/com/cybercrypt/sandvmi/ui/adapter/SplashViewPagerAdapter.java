@@ -1,4 +1,4 @@
-package com.cybercrypt.sandvmi.adapter;
+package com.cybercrypt.sandvmi.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

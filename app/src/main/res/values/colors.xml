@@ -18,7 +18,8 @@
 
     <color name="forms_background">#0D0E31</color>
     <color name="form_item_background">#13154E</color>
-    <color name="bg_error">#DD5A59</color>
+    <color name="bg_dialog_error">#DD5A59</color>
+    <color name="bg_dialog_success">#5cb85c</color>
 
     <array name="array_dot_active">
         <item>@color/dot_dark_screen</item>

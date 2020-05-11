@@ -8,16 +8,16 @@ import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
-import com.cybercrypt.sandvmi.adapter.CustomProfileListAdapter;
+import com.cybercrypt.sandvmi.ui.adapter.CustomProfileListAdapter;
 import com.cybercrypt.sandvmi.databinding.FragmentProfileBinding;
-import com.cybercrypt.sandvmi.model.ProfileItem;
+import com.cybercrypt.sandvmi.data.local.model.ProfileItem;
+import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 import java.util.ArrayList;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends BaseFragment {
 
     private FragmentProfileBinding binding;
 
@@ -29,6 +29,8 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
 
+        setToolbarTitle(getResources().getString(R.string.menu_profile));
+        setToolbarIcon(BaseFragment.BACK_ICON);
 
         final CustomProfileListAdapter cAdapter=new CustomProfileListAdapter(
                 getActivity(),
@@ -54,8 +56,8 @@ public class ProfileFragment extends Fragment {
         return items;
     }
 
-
-
-
-
+    @Override
+    public void onNavigationIconClick() {
+        getActivity().onBackPressed();
+    }
 }

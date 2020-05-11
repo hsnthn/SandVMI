@@ -6,17 +6,20 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/bg_screen"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_home_screens"
+        layout="@layout/custom_toolbar"
         android:layout_width="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/status_bar_height"
+
         />
 
 

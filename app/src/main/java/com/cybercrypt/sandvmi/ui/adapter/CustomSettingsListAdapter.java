@@ -1,4 +1,4 @@
-package com.cybercrypt.sandvmi.adapter;
+package com.cybercrypt.sandvmi.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cybercrypt.sandvmi.R;
-import com.cybercrypt.sandvmi.model.SettingsItem;
+import com.cybercrypt.sandvmi.data.local.model.SettingsItem;
 
 import java.util.List;
 
