@@ -8,22 +8,18 @@ import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
-import com.cybercrypt.sandvmi.adapter.CustomSettingsListAdapter;
+import com.cybercrypt.sandvmi.ui.adapter.CustomSettingsListAdapter;
 import com.cybercrypt.sandvmi.databinding.FragmentSettingsBinding;
-import com.cybercrypt.sandvmi.model.SettingsItem;
+import com.cybercrypt.sandvmi.data.local.model.SettingsItem;
 import com.cybercrypt.sandvmi.ui.MainActivity;
+import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 import com.cybercrypt.sandvmi.ui.util.FragmentUtils;
 
 import java.util.ArrayList;
 
-import static com.cybercrypt.sandvmi.ui.util.FragmentUtils.TRANSITION_NONE;
-
-public class SettingsFragment extends Fragment {
-
-    private FragmentSettingsBinding binding;
+public class SettingsFragment extends BaseFragment {
 
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
@@ -32,7 +28,9 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
+        FragmentSettingsBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
+        setToolbarTitle(getResources().getString(R.string.menu_setting));
+        setToolbarIcon(BaseFragment.BACK_ICON);
 
         final ArrayList<SettingsItem> settingsMenuList=prepareSettingsMenu();
         final CustomSettingsListAdapter cAdapter=new CustomSettingsListAdapter(
@@ -64,6 +62,10 @@ public class SettingsFragment extends Fragment {
         return items;
     }
 
+    @Override
+    public void onNavigationIconClick() {
+        getActivity().onBackPressed();
+    }
 
 
 }

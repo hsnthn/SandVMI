@@ -6,20 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
-import com.cybercrypt.sandvmi.adapter.CustomHomeVMListAdapter;
+import com.cybercrypt.sandvmi.data.local.model.VMListItem;
 import com.cybercrypt.sandvmi.databinding.FragmentHomeBinding;
-import com.cybercrypt.sandvmi.model.VMListItem;
+import com.cybercrypt.sandvmi.ui.MainActivity;
+import com.cybercrypt.sandvmi.ui.adapter.CustomHomeVMListAdapter;
+import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private FragmentHomeBinding binding;
     private ArrayList<VMListItem> dataList;
@@ -33,6 +33,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+
+        setToolbarTitle(getResources().getString(R.string.menu_home));
 
         setDummys();
         dataList = new ArrayList<VMListItem>();
@@ -66,4 +68,8 @@ public class HomeFragment extends Fragment {
         lv2="Last visit: 10/01/20 at 09:35";
     }
 
+    @Override
+    public void onNavigationIconClick() {
+        ((MainActivity)getActivity()).drawerOpen();
+    }
 }

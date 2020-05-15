@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="username"
+            type="String"
+            />
+
+        <variable
+            name="planname"
+            type="String"
+            />
+    </data>
 <RelativeLayout android:id="@+id/loggeduser"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/bg_user"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/bg_user">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -19,15 +31,20 @@
         style="@style/SandTextView.VarelaRound.Title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_title"
+        tools:text="@string/nav_header_title"
         app:applyLetterSpace="true"
+        android:text="@{username}"
          />
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         android:id="@+id/txt_plan"
         style="@style/SandTextView.RobotoNormal.Small"
         android:textColor="@color/hint_color"
-        android:text="@string/nav_header_subtitle" />
+        tools:text="@string/nav_header_subtitle"
+        android:text="@{planname}"
+
+        />
     </LinearLayout>
 
 </RelativeLayout>
+</layout>

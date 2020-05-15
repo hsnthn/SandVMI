@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionChoosePaymentMethodBinding;
-import com.cybercrypt.sandvmi.ui.SubscriptionScreenActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 public class SubscriptionChoosePaymentPlanFragment extends BaseFragment {
@@ -33,7 +32,7 @@ public class SubscriptionChoosePaymentPlanFragment extends BaseFragment {
         binding= DataBindingUtil.inflate(inflater, R.layout.fragment_subscription_choose_payment_method, container, false);
 
         setToolbarTitle(getResources().getString(R.string.subscription_choose_payment_plan_title));
-        toolbarNavIcon(true);
+        setToolbarIcon(BaseFragment.BACK_ICON);
 
         binding.checkSubscriptipnPaymentMethod1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

@@ -2,18 +2,15 @@ package com.cybercrypt.sandvmi.ui.subscriptionscreen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionConfirmationBinding;
 import com.cybercrypt.sandvmi.ui.MainActivity;
-import com.cybercrypt.sandvmi.ui.SubscriptionScreenActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 
@@ -35,7 +32,8 @@ public class SubscriptionConfirmationFragment extends BaseFragment {
         FragmentSubscriptionConfirmationBinding binding= DataBindingUtil.inflate(inflater, R.layout.fragment_subscription_confirmation, container, false);
 
         setToolbarTitle(getResources().getString(R.string.subscription_confirmation_title));
-        toolbarNavIcon(false);
+        setToolbarIcon(BaseFragment.NONE);
+
 
         String str ="You will be billed £15 on 21/02/20 and once a month thereafter until cancelled.";
         binding.confirmationTxt1.setText(str);

@@ -1,6 +1,7 @@
 package com.cybercrypt.sandvmi.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -16,9 +17,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.ViewPager;
 
 import com.cybercrypt.sandvmi.R;
-import com.cybercrypt.sandvmi.adapter.SplashViewPagerAdapter;
+import com.cybercrypt.sandvmi.ui.adapter.SplashViewPagerAdapter;
 import com.cybercrypt.sandvmi.databinding.ActivityIntroSliderBinding;
 import com.cybercrypt.sandvmi.ui.util.Utils;
+import com.cybercrypt.sandvmi.util.PrefHelper;
 
 public class IntroSliderScreenActivity extends Activity {
 
@@ -104,15 +106,22 @@ public class IntroSliderScreenActivity extends Activity {
     }
 
     private void launchHomeScreen() {
-        Intent i = new Intent(IntroSliderScreenActivity.this, MainActivity.class);
-        i.putExtra("fragment", MainActivity.LOGINTAG);
+        AppFirstRunCheck();
+        Intent i = new Intent(IntroSliderScreenActivity.this, AuthenticationActivity.class);
+        i.putExtra("fragment", AuthenticationActivity.LOGINTAG);
         startActivity(i);
         finish();
     }
 
     private void launchSubscriptionScreen() {
+        AppFirstRunCheck();
         startActivity(new Intent(IntroSliderScreenActivity.this, SubscriptionScreenActivity.class));
         finish();
+    }
+
+    private void AppFirstRunCheck(){
+        if (PrefHelper.getFirstTimeRun(getApplicationContext())==0)
+            PrefHelper.appFirstRun(getApplicationContext());
     }
 
     //  viewpager change listener

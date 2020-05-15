@@ -1,5 +1,5 @@
 
-package com.cybercrypt.sandvmi.model;
+package com.cybercrypt.sandvmi.data.local.model;
 
 public class ProfileItem {
 

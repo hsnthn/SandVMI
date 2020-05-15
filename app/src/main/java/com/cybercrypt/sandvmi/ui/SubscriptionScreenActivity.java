@@ -1,24 +1,21 @@
 package com.cybercrypt.sandvmi.ui;
 
 
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentActivity;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.ActivitySubscriptionscreenBinding;
-import com.cybercrypt.sandvmi.databinding.ToolbarSubscriptionBinding;
 import com.cybercrypt.sandvmi.ui.subscriptionscreen.SubscriptionChoosePlanFragment;
 import com.cybercrypt.sandvmi.ui.subscriptionscreen.SubscriptionConfirmationFragment;
+import com.cybercrypt.sandvmi.ui.util.BaseActivity;
 import com.cybercrypt.sandvmi.ui.util.FragmentUtils;
 import com.cybercrypt.sandvmi.ui.util.Utils;
 
 import static com.cybercrypt.sandvmi.ui.util.FragmentUtils.TRANSITION_NONE;
 
-public class SubscriptionScreenActivity extends FragmentActivity {
+public class SubscriptionScreenActivity extends BaseActivity {
 
     public ActivitySubscriptionscreenBinding binding;
 
@@ -26,16 +23,14 @@ public class SubscriptionScreenActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_subscriptionscreen);
+        bindToolbar(binding.toolbar);
 
         if (savedInstanceState == null) {
-            FragmentUtils.replaceFragment(this, SubscriptionChoosePlanFragment.newInstance(), R.id.fragment_place, false, TRANSITION_NONE);
+            FragmentUtils.replaceFragment(this, SubscriptionChoosePlanFragment.newInstance(), R.id.nav_host_fragment, false, TRANSITION_NONE);
         }
 
     }
 
-    public ToolbarSubscriptionBinding getSubscriptionToolBar(){
-        return  binding.toolbar;
-    }
 
     @Override
     public void onBackPressed() {

@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionChoosePlanBinding;
-import com.cybercrypt.sandvmi.ui.MainActivity;
+import com.cybercrypt.sandvmi.ui.AuthenticationActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 public class SubscriptionChoosePlanFragment extends BaseFragment {
@@ -33,8 +33,7 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
         binding= DataBindingUtil.inflate(inflater, R.layout.fragment_subscription_choose_plan, container, false);
 
         setToolbarTitle(getResources().getString(R.string.subscription_choose_plan_title));
-        toolbarNavIcon(true);
-
+        setToolbarIcon(BaseFragment.BACK_ICON);
 
         binding.checkSubscriptipnMenu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -79,7 +78,7 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
     @Override
     public void onNavigationIconClick() {
         super.onNavigationIconClick();
-        launchHomeScreen();
+        goToAuthentication();
     }
 
     private void enableButton(){
@@ -88,8 +87,8 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
         }
     }
 
-    private void launchHomeScreen() {
-        Intent i = new Intent(getActivity(), MainActivity.class);
+    private void goToAuthentication() {
+        Intent i = new Intent(getActivity(), AuthenticationActivity.class);
         startActivity(i);
         getActivity().finish();
     }
