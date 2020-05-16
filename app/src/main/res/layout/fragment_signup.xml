@@ -2,90 +2,121 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<LinearLayout
-    android:id="@+id/layout_signup"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-   <com.cybercrypt.sandvmi.ui.widget.SandTextView
-       style="@style/SandTextView.VarelaRound.Title1"
-       android:text="@string/signup_title"
-       android:layout_marginStart="16dp"
-       android:layout_marginEnd="16dp"
-       android:layout_marginTop="78dp"
-       android:gravity="center"
-       />
+        <LinearLayout
+            android:id="@+id/layout_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-    <com.cybercrypt.sandvmi.ui.widget.SandEditText
-        android:id="@+id/edit_su_email"
-        style="@style/EditTextStyle"
-        android:layout_marginTop="24dp"
-        android:drawableStart="@drawable/ic_mail_full_gray"
-        android:inputType="textEmailAddress"
-        android:hint="@string/signup_edit1_hint"
-        android:drawablePadding="10dp"
-        android:imeOptions="actionNext"
-        android:autofillHints="AUTOFILL_HINT_EMAIL_ADDRESS"
-        />
+            <com.cybercrypt.sandvmi.ui.widget.SandTextView
+                style="@style/SandTextView.VarelaRound.Title1"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="78dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="@string/signup_title" />
 
-    <com.cybercrypt.sandvmi.ui.widget.SandEditText
-        android:id="@+id/edit_su_uname"
-        style="@style/EditTextStyle"
-        android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_profile_full_gray"
-        android:inputType="textPersonName"
-        android:hint="@string/signup_edit2_hint"
-        android:drawablePadding="10dp"
-        android:imeOptions="actionNext"
-        android:autofillHints="AUTOFILL_HINT_USERNAME"
+            <com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout
+                android:id="@+id/textinput_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-2dp"
+                android:layout_marginTop="24dp"
+                app:errorTextAppearance="@style/ErrorText"
+                app:hintEnabled="false">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_su_email"
+                    style="@style/EditTextStyle"
+                    android:autofillHints="AUTOFILL_HINT_EMAIL_ADDRESS"
+                    android:drawableStart="@drawable/ic_mail_full_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/signup_edit1_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress" />
 
-        />
-    <com.cybercrypt.sandvmi.ui.widget.SandEditText
-        android:id="@+id/edit_su_pass"
-        style="@style/EditTextStyle"
-        android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_lock_full_gray"
-        android:hint="@string/signup_edit3_hint"
-        android:drawablePadding="10dp"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:autofillHints="AUTOFILL_HINT_PASSWORD"
-        />
+            </com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout>
 
-    <com.cybercrypt.sandvmi.ui.widget.SandTextView
-        android:id="@+id/txt_su_info"
-        style="@style/SandTextView.RobotoNormal.Small"
-        android:textColor="@color/secondary_text_color"
-        android:text="@string/signup_info"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:applyLetterSpace="true"
-        />
+            <com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout
+                android:id="@+id/textinput_uname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-2dp"
+                android:layout_marginTop="8dp"
+                app:errorTextAppearance="@style/ErrorText"
+                app:hintEnabled="false">
 
-    <Button
-        android:id="@+id/btn_su_signup"
-        style="@style/ButtonStyle"
-        android:enabled="false"
-        android:layout_marginTop="24dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/signup_btn_txt"
-        />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_su_uname"
+                    style="@style/EditTextStyle"
+                    android:autofillHints="AUTOFILL_HINT_USERNAME"
+                    android:drawableStart="@drawable/ic_profile_full_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/signup_edit2_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
 
-    <com.cybercrypt.sandvmi.ui.widget.SandTextView
-        android:layout_marginTop="24dp"
-        style="@style/SandTextView.RobotoNormal.Medium"
-        android:textColor="@color/secondary_text_color"
-        android:text="@string/sigup_info_2"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="center"
-        app:applyLetterSpace="true"
-        />
+                    />
+            </com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout>
 
-</LinearLayout>
+            <com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout
+                android:id="@+id/textinput_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-2dp"
+                android:layout_marginTop="8dp"
+                app:errorTextAppearance="@style/ErrorText"
+                app:hintEnabled="false"
+                app:passwordToggleDrawable="@drawable/password_selector"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/edit_cursor_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_su_pass"
+                    style="@style/EditTextStyle"
+                    android:autofillHints="AUTOFILL_HINT_PASSWORD"
+                    android:drawableStart="@drawable/ic_lock_full_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/signup_edit3_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword" />
+            </com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout>
+
+            <com.cybercrypt.sandvmi.ui.widget.SandTextView
+                android:id="@+id/txt_su_info"
+                style="@style/SandTextView.RobotoNormal.Small"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/signup_info"
+                android:textColor="@color/secondary_text_color"
+                app:applyLetterSpace="true" />
+
+            <Button
+                android:id="@+id/btn_su_signup"
+                style="@style/ButtonStyle"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:enabled="false"
+                android:text="@string/signup_btn_txt" />
+
+            <com.cybercrypt.sandvmi.ui.widget.SandTextView
+                style="@style/SandTextView.RobotoNormal.Medium"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center"
+                android:text="@string/sigup_info_2"
+                android:textColor="@color/secondary_text_color"
+                app:applyLetterSpace="true" />
+
+        </LinearLayout>
+    </ScrollView>
 </layout>

@@ -113,6 +113,17 @@
     <string name="pincode_title">Enter Pin Code</string>
     <string name="success_signup">You have signed up succesfully.</string>
     <string name="error_internet_connection">No internet connection</string>
+    <string name="error_valid_email">Please input a valid email address</string>
+    <string name="error_fill">Please fill out this field.</string>
+    <string name="error_uname_char_count">Please enter minimum 4 or maximum 10 characters</string>
+    <string name="error_valid_uname"> Only letters and digits are available for this field</string>
+    <string name="error_pass_char_count" >Please enter minimum 8 or maximum 15 characters</string>
+    <string name="error_valid_pass">Please enter a valid password</string>
+    <string name="error_pass_number">Password must contain 1 number</string>
+    <string name="error_pass_symbols">Password must contain 1 special character</string>
+    <string name="error_pass_upper_char">Password must contain 1 uppercase letter</string>
+    <string name="error_pass_lower_char">Password must contain 1 lowercase letter</string>
+    <string name="error_pass_not_allowed">Please do not use not allowed symbols.</string>
 
     <string-array name="months_array">
         <item>01</item>

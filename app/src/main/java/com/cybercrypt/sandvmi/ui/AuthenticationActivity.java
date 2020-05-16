@@ -7,7 +7,9 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.ActivityAuthenticationBinding;
@@ -17,10 +19,10 @@ import com.cybercrypt.sandvmi.ui.authentication.signup.SignupFragment;
 import com.cybercrypt.sandvmi.ui.util.BaseActivity;
 import com.cybercrypt.sandvmi.ui.util.Utils;
 
-public class AuthenticationActivity extends BaseActivity  {
+public class AuthenticationActivity extends BaseActivity {
 
     ActivityAuthenticationBinding binding;
-    public static final String SIGNUPTAG="SIGNUP";
+    public static final String SIGNUPTAG = "SIGNUP";
     public static final String LOGINTAG = "LOGIN";
     public static final String FORGOTPASSWORDTAG = "FORGOTPASSWORD";
 
@@ -36,27 +38,27 @@ public class AuthenticationActivity extends BaseActivity  {
 
         Intent intent = getIntent();
         if (intent.hasExtra("fragment")) {
-            String fragName= intent.getStringExtra("fragment");
-            if (fragName.equals(LOGINTAG)){
+            String fragName = intent.getStringExtra("fragment");
+            if (fragName.equals(LOGINTAG)) {
                 showLoginFragment();
-            }else if(fragName.equals(SIGNUPTAG)){
+            } else if (fragName.equals(SIGNUPTAG)) {
                 showSignUpFragment();
             }
-        }else{
+        } else {
             showLoginFragment();
         }
     }
 
-    private void showLoginFragment(){
-        changeFragment(LoginFragment.newInstance(),LOGINTAG);
+    private void showLoginFragment() {
+        changeFragment(LoginFragment.newInstance(), LOGINTAG);
     }
 
-    private void showSignUpFragment(){
-        changeFragment(SignupFragment.newInstance(),SIGNUPTAG);
+    private void showSignUpFragment() {
+        changeFragment(SignupFragment.newInstance(), SIGNUPTAG);
     }
 
-    public void ForgotPasswordClick(View view){
-        changeFragment(ForgotPasswordFragment.newInstance(),FORGOTPASSWORDTAG);
+    public void ForgotPasswordClick(View view) {
+        changeFragment(ForgotPasswordFragment.newInstance(), FORGOTPASSWORDTAG);
     }
 
     @Override
@@ -69,8 +71,8 @@ public class AuthenticationActivity extends BaseActivity  {
     public void onBackPressed() {
         hideKeyboard();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Log.w("dsa",String.valueOf(fragmentManager.getBackStackEntryCount()));
-        if (fragmentManager.getBackStackEntryCount() >1 ) {
+        if (fragmentManager.getBackStackEntryCount() > 1) {
+
             fragmentManager.popBackStack();
 
         } else {
@@ -78,7 +80,7 @@ public class AuthenticationActivity extends BaseActivity  {
         }
     }
 
-    public void SignupClick(View view){
+    public void SignupClick(View view) {
         showSignUpFragment();
     }
 

@@ -46,7 +46,6 @@ public class PrefHelper {
 
         Gson gson = new Gson();
         String json = getPreferences(context).getString(LOGGED_IN_USER_PREF, "");
-        Log.w("----------->",json);
         return new Gson().fromJson(json, User.class);
     }
     /*
@@ -92,7 +91,6 @@ public class PrefHelper {
 
         Gson gson = new Gson();
         String json = getPreferences(context).getString(LOGIN_CREDENTIALS, "");
-        Log.w("----------->",json);
         return new Gson().fromJson(json, User.class);
     }
 
