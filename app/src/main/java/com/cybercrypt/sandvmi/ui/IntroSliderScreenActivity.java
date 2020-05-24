@@ -148,7 +148,6 @@ public class IntroSliderScreenActivity extends Activity {
 
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {
-            Log.w("scrold","scroled");
         }
 
         @Override

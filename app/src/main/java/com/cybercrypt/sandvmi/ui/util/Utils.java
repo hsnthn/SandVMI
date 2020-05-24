@@ -21,6 +21,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class Utils {
 
+    public static final String ALLOWED_SPECIAL_CHARACTERS = "_!@#$%^&+=.,";
+
     public static void Show(Context cont, String durum) {
         Toast.makeText(cont, durum, Toast.LENGTH_SHORT).show();
     }
@@ -31,12 +33,12 @@ public class Utils {
     }
 
     public static boolean checkUserNamePattern(String uname) {
-        String unamePattern = "^[a-z0-9_-]{3,15}$";
+        String unamePattern = "^[a-z0-9_-]{4,10}$";
         return uname.trim().matches(unamePattern);
     }
 
     public static boolean checkPasswordPattern(String pass) {
-        String passPattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[_!@#$%^&+=])(?=\\S+$).{8,}$";
+        String passPattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*["+ALLOWED_SPECIAL_CHARACTERS+"])(?=\\S+$).{8,}$";
         return pass.trim().matches(passPattern);
     }
 

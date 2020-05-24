@@ -40,7 +40,7 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -76,7 +76,7 @@ public class LoginFragment extends BaseFragment {
                 pass = binding.editLoPass.getText().toString();
                 if (Utils.isNetworkConnected(getContext()))
                     loginViewModel.getUser(uname, pass);
-                else{
+                else {
                     hideKeyboard();
                     Utils.showSnackbar(getActivity(), binding.layLogin, Utils.DialogColor.ERROR, getResources().getString(R.string.error_internet_connection));
                 }

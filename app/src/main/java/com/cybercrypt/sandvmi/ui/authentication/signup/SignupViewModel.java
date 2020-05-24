@@ -8,6 +8,10 @@ import androidx.lifecycle.ViewModel;
 import com.cybercrypt.sandvmi.api.Client;
 import com.cybercrypt.sandvmi.api.Resources;
 import com.cybercrypt.sandvmi.data.remote.response.SignupResponse;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
+
+import java.io.IOException;
 
 import retrofit2.Response;
 import rx.Observer;
@@ -38,8 +42,22 @@ public class SignupViewModel extends ViewModel {
                         Log.w("sonuc",response.toString());
                         if (response.code() == 200)
                             mutableLiveData.setValue(Resources.success(null,""));
-                        else
-                            mutableLiveData.setValue(Resources.error(response.message(),null));
+                        else{
+                            Gson gson = new Gson();
+                            SignupResponse registerResponse = null;
+                            TypeAdapter<SignupResponse> adapter = gson.getAdapter(SignupResponse.class);
+                            try {
+                                if (response.errorBody() != null)
+                                    registerResponse =
+                                            adapter.fromJson(
+                                                    response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                registerResponse = new SignupResponse();
+                                registerResponse.message="unknown error";
+                            }
+                            mutableLiveData.setValue(Resources.error(registerResponse.message,null));
+                        }
                     }
                 });
     }

@@ -2,6 +2,10 @@ package com.cybercrypt.sandvmi.ui.authentication.signup;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -23,7 +28,13 @@ import com.cybercrypt.sandvmi.data.remote.model.User;
 import com.cybercrypt.sandvmi.databinding.FragmentSignupBinding;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 import com.cybercrypt.sandvmi.ui.util.Utils;
+import com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout;
 import com.cybercrypt.sandvmi.util.PrefHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignupFragment extends BaseFragment {
 
@@ -42,7 +53,7 @@ public class SignupFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        signupViewModel = new ViewModelProvider(requireActivity()).get(SignupViewModel.class);
+        signupViewModel = new ViewModelProvider(this).get(SignupViewModel.class);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -65,13 +76,12 @@ public class SignupFragment extends BaseFragment {
             }
         });
 
-        binding.editSuEmail.setOnFocusChangeListener(emailFocusChangeListener);
-        binding.editSuPass.setOnFocusChangeListener(passfocusChangeListener);
-        binding.editSuUname.setOnFocusChangeListener(unameFocusChangeListener);
 
         binding.btnSuSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(binding.editSuPass.getWindowToken(), 0);
                 passValControl();
                 unameValControl();
                 emailValControl();
@@ -86,8 +96,7 @@ public class SignupFragment extends BaseFragment {
                         email = binding.editSuEmail.getText().toString();
                         pass = binding.editSuPass.getText().toString();
                         signupViewModel.signup(email, uname, pass);
-                    }else{
-                        hideKeyboard();
+                    } else {
                         Utils.showSnackbar(getActivity(), binding.layoutSignup, Utils.DialogColor.ERROR, getResources().getString(R.string.error_internet_connection));
                     }
                 }
@@ -97,12 +106,13 @@ public class SignupFragment extends BaseFragment {
         signupViewModel.mutableLiveData.observe(getViewLifecycleOwner(), new Observer<Resources>() {
             @Override
             public void onChanged(Resources resources) {
-                hideKeyboard();
-
+              /*  if(getViewLifecycleOwner().getLifecycle().getCurrentState()== Lifecycle.State.){
+                    // your code here ...
+                }*/
                 if (resources.status == Status.SUCCESS) {
                     PrefHelper.setLoginCredentials(getActivity(), new User(uname, pass));
                     showMessages(Utils.DialogColor.SUCCESS, getResources().getString(R.string.success_signup));
-
+                    getActivity().onBackPressed();
                 } else {
                     String serviceMessage = resources.getMessage();
                     showMessages(Utils.DialogColor.ERROR, serviceMessage);
@@ -110,9 +120,23 @@ public class SignupFragment extends BaseFragment {
             }
         });
 
+
+        binding.editSuEmail.setOnFocusChangeListener(emailFocusChangeListener);
+        binding.editSuPass.setOnFocusChangeListener(passfocusChangeListener);
+        binding.editSuUname.setOnFocusChangeListener(unameFocusChangeListener);
+
+        binding.editSuEmail.addTextChangedListener(emailWatcher);
+        binding.editSuUname.addTextChangedListener(unameWatcher);
+        binding.editSuPass.addTextChangedListener(passWatcher);
+
         return binding.getRoot();
     }
 
+    @Override
+    public void onNavigationIconClick() {
+        super.onNavigationIconClick();
+        getActivity().onBackPressed();
+    }
 
     private void showMessages(int status, String message) {
         if (binding.editSuEmail.isFocused()) binding.editSuEmail.clearFocus();
@@ -171,39 +195,191 @@ public class SignupFragment extends BaseFragment {
         }
     };
 
-    @Override
-    public void onNavigationIconClick() {
-        super.onNavigationIconClick();
-        getActivity().onBackPressed();
-    }
+    private TextWatcher emailWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            emailValControl();
+            checkValidations();
+        }
+    };
+
+    private TextWatcher unameWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            unameValControl();
+            checkValidations();
+        }
+    };
+
+    private TextWatcher passWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            passValControl();
+            checkValidations();
+        }
+    };
+
 
     private void passValControl() {
-        if (Utils.checkPasswordPattern(binding.editSuPass.getText().toString())) {
-            pass_val_status = true;
-            binding.editSuPass.setBackgroundResource(R.drawable.bg_success_edit_text);
-        } else {
+        pass = binding.editSuPass.getText().toString();
+        pass_val_status = true;
+        List<String> errorList = new ArrayList<>();
+        if (TextUtils.isEmpty(pass)) {
             pass_val_status = false;
-            binding.editSuPass.setBackgroundResource(R.drawable.bg_error_edit_text);
+            errorList.add(getResources().getString(R.string.error_fill));
+        } else {
+            if (pass.length() < 8 || pass.length() > 15) {
+                pass_val_status = false;
+                errorList.add(getResources().getString(R.string.error_pass_char_count));
+            }
+
+
+            //errorList.add(getResources().getString(R.string.error_valid_pass));
+
+            //Pattern special = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            Pattern allowedSpecial = Pattern.compile("[" + Utils.ALLOWED_SPECIAL_CHARACTERS + "]");
+            Pattern number = Pattern.compile("[0-9]", Pattern.CASE_INSENSITIVE);
+            Pattern upper = Pattern.compile("[A-Z]");
+            Pattern lower = Pattern.compile("[a-z]");
+            Pattern whiteList = Pattern.compile("[a-zA-Z0-9_!@#$%^&+=,.]*$"); //
+
+            //Matcher matcherSymbols = special.matcher(pass);
+            Matcher matcherAllowedSymbols = allowedSpecial.matcher(pass);
+            Matcher matcherNumber = number.matcher(pass);
+            Matcher matcherUpperChar = upper.matcher(pass);
+            Matcher matcherLowerChar = lower.matcher(pass);
+            Matcher matcherWhiteList = whiteList.matcher(pass);
+
+            //boolean constainsSymbols = matcherSymbols.find();
+            boolean containsNumber = matcherNumber.find();
+            boolean containsUpperChar = matcherUpperChar.find();
+            boolean containsLowerChar = matcherLowerChar.find();
+            boolean containsAllowedSymbols = matcherAllowedSymbols.find();
+            boolean containsWhiteList = matcherWhiteList.find();
+
+            if (!containsUpperChar) {
+                pass_val_status = false;
+                errorList.add(getResources().getString(R.string.error_pass_upper_char));
+            }
+
+            if (!containsLowerChar) {
+                pass_val_status = false;
+                errorList.add(getResources().getString(R.string.error_pass_lower_char));
+            }
+
+            if (!containsNumber) {
+                pass_val_status = false;
+                errorList.add(getResources().getString(R.string.error_pass_number));
+            }
+
+            if (!containsAllowedSymbols) {
+                pass_val_status = false;
+                errorList.add(getResources().getString(R.string.error_pass_symbols) );
+            } else if (!matcherWhiteList.matches()) {
+                pass_val_status = false;
+                errorList.add(getResources().getString(R.string.error_pass_not_allowed)+ "\nAllowed symbols: \n" + Utils.ALLOWED_SPECIAL_CHARACTERS);
+
+            }
+
         }
+
+        if (pass_val_status) {
+            binding.textinputPassword.setError(null);
+            binding.textinputPassword.setStatus(SandTextInputLayout.SUCCESS);
+        } else {
+            StringBuilder errorText = new StringBuilder();
+            for (String error : errorList) {
+                if (errorText.length() == 0) {
+                    errorText.append(error);
+                } else {
+                    errorText.append("\n").append(error);
+                }
+
+            }
+            binding.textinputPassword.setError(errorText);
+            binding.textinputPassword.setStatus(SandTextInputLayout.ERROR);
+        }
+
     }
 
     private void unameValControl() {
-        if (Utils.checkUserNamePattern(binding.editSuUname.getText().toString())) {
-            uname_val_status = true;
-            binding.editSuUname.setBackgroundResource(R.drawable.bg_success_edit_text);
-        } else {
+        uname = binding.editSuUname.getText().toString();
+        uname_val_status = true;
+        List<String> errorList = new ArrayList<>();
+
+        if (TextUtils.isEmpty(uname)) {
             uname_val_status = false;
-            binding.editSuUname.setBackgroundResource(R.drawable.bg_error_edit_text);
+            errorList.add(getResources().getString(R.string.error_fill));
+        } else {
+
+            if (uname.length() < 4 || uname.length() > 10) {
+                uname_val_status = false;
+                errorList.add(getResources().getString(R.string.error_uname_char_count));
+            }
+
+            if (!Utils.checkUserNamePattern(uname)) {
+                uname_val_status = false;
+                errorList.add(getResources().getString(R.string.error_valid_uname));
+            }
         }
+
+        if (uname_val_status) {
+            binding.textinputUname.setError(null);
+            binding.textinputUname.setStatus(SandTextInputLayout.SUCCESS);
+        } else {
+            StringBuilder errorText = new StringBuilder();
+            for (String error : errorList) {
+                if (errorText.length() == 0) {
+                    errorText.append(error);
+                } else {
+                    errorText.append("\n").append(error);
+                }
+
+            }
+            binding.textinputUname.setError(errorText);
+            binding.textinputUname.setStatus(SandTextInputLayout.ERROR);
+        }
+
     }
 
-    private  void emailValControl(){
-        if (Utils.checkEmailPattern(binding.editSuEmail.getText().toString())) {
-            email_val_status = true;
-            binding.editSuEmail.setBackgroundResource(R.drawable.bg_success_edit_text);
-        } else {
+    private void emailValControl() {
+        email = binding.editSuEmail.getText().toString();
+        if (TextUtils.isEmpty(email)) {
             email_val_status = false;
-            binding.editSuEmail.setBackgroundResource(R.drawable.bg_error_edit_text);
+            binding.textinputEmail.setError(getResources().getString(R.string.error_fill));
+            binding.textinputEmail.setStatus(SandTextInputLayout.ERROR);
+        } else if (!Utils.checkEmailPattern(email)) {
+            email_val_status = false;
+            binding.textinputEmail.setError(getResources().getString(R.string.error_valid_email));
+            binding.textinputEmail.setStatus(SandTextInputLayout.ERROR);
+        } else {
+            email_val_status = true;
+            binding.textinputEmail.setError(null);
+            binding.textinputEmail.setStatus(SandTextInputLayout.SUCCESS);
         }
     }
 

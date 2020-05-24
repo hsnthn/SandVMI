@@ -31,17 +31,32 @@
         android:autofillHints="AUTOFILL_HINT_USERNAME"
         />
 
-    <com.cybercrypt.sandvmi.ui.widget.SandEditText
-        android:id="@+id/edit_lo_pass"
-        style="@style/EditTextStyle"
+    <com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout
+        android:id="@+id/textinput_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-2dp"
         android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_lock_full_gray"
-        android:hint="@string/signup_edit3_hint"
-        android:drawablePadding="10dp"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:autofillHints="AUTOFILL_HINT_PASSWORD"
-        />
+        app:errorTextAppearance="@style/ErrorText"
+        app:hintEnabled="false"
+        app:passwordToggleDrawable="@drawable/password_selector"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/edit_cursor_color">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_lo_pass"
+            style="@style/EditTextStyle"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_lock_full_gray"
+            android:hint="@string/signup_edit3_hint"
+            android:drawablePadding="10dp"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:autofillHints="AUTOFILL_HINT_PASSWORD"
+            />
+
+    </com.cybercrypt.sandvmi.ui.widget.SandTextInputLayout>
+
 
     <com.cybercrypt.sandvmi.ui.widget.SandTextView
         android:id="@+id/txt_lo_forgot"
