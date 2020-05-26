@@ -17,21 +17,23 @@ public class FragmentUtils {
     public static final int TRANSITION_NONE = 4;
 
     @IntDef({TRANSITION_POP, TRANSITION_FADE_IN_OUT, TRANSITION_SLIDE_LEFT_RIGHT, TRANSITION_SLIDE_LEFT_RIGHT_WITHOUT_EXIT, TRANSITION_NONE})
-    @interface FragmentAnimation {}
+    @interface FragmentAnimation {
+    }
 
 
-    private FragmentUtils() { }
+    private FragmentUtils() {
+    }
 
 
     public static void replaceFragment(FragmentActivity activity, Fragment fragment, int id, boolean addToBackStack, @FragmentAnimation int animationType) {
 
-        if(null == activity)
+        if (null == activity)
             return;
 
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        switch (animationType){
+        switch (animationType) {
             case TRANSITION_POP:
                 transaction.setCustomAnimations(R.anim.anim_enter, R.anim.anim_exit, R.anim.anim_pop_enter, R.anim.anim_pop_exit);
                 break;
@@ -47,7 +49,7 @@ public class FragmentUtils {
 
             case TRANSITION_NONE:
             default:
-                transaction.setCustomAnimations(0,0);
+                transaction.setCustomAnimations(0, 0);
                 break;
         }
 
@@ -58,15 +60,15 @@ public class FragmentUtils {
         transaction.commit();
     }
 
-    public static void replaceFragment(FragmentActivity activity, Fragment fragment, int id,boolean addToBackStack, String layoutTag, @FragmentAnimation int animationType) {
+    public static void replaceFragment(FragmentActivity activity, Fragment fragment, int id, boolean addToBackStack, String layoutTag, @FragmentAnimation int animationType) {
 
-        if(null == activity)
+        if (null == activity)
             return;
 
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        switch (animationType){
+        switch (animationType) {
             case TRANSITION_POP:
                 transaction.setCustomAnimations(R.anim.anim_enter, R.anim.anim_exit, R.anim.anim_pop_enter, R.anim.anim_pop_exit);
                 break;
@@ -82,7 +84,7 @@ public class FragmentUtils {
 
             case TRANSITION_NONE:
             default:
-                transaction.setCustomAnimations(0,0);
+                transaction.setCustomAnimations(0, 0);
                 break;
         }
 
@@ -93,9 +95,13 @@ public class FragmentUtils {
         transaction.commit();
     }
 
+    public static void clearFragmentBackStack(FragmentActivity activity) {
 
+        FragmentManager fm = activity.getSupportFragmentManager();
+        for (
+                int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            fm.popBackStack();
+        }
 
-
-
-
+    }
 }

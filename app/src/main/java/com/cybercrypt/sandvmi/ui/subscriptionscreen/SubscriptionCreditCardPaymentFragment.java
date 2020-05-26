@@ -40,7 +40,7 @@ public class SubscriptionCreditCardPaymentFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 hideKeyboard();
-                changeFragment(SubscriptionConfirmationFragment.newInstance());
+                changeFragment(SubscriptionConfirmationFragment.newInstance(),"SubscriptionConfirmationFragment");
             }
         });
 

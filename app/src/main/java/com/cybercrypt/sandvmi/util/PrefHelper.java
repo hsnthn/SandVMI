@@ -14,6 +14,9 @@ import static com.cybercrypt.sandvmi.util.PrefContants.APP_FIRST_TIME;
 import static com.cybercrypt.sandvmi.util.PrefContants.LOGGED_IN_PREF;
 import static com.cybercrypt.sandvmi.util.PrefContants.LOGGED_IN_USER_PREF;
 import static com.cybercrypt.sandvmi.util.PrefContants.LOGIN_CREDENTIALS;
+import static com.cybercrypt.sandvmi.util.PrefContants.PIN_AUTH_PREF;
+import static com.cybercrypt.sandvmi.util.PrefContants.PIN_CODE;
+import static com.cybercrypt.sandvmi.util.PrefContants.TEMPORARY_PIN_CODE;
 
 public class PrefHelper {
     static SharedPreferences getPreferences(Context context) {
@@ -92,6 +95,42 @@ public class PrefHelper {
         Gson gson = new Gson();
         String json = getPreferences(context).getString(LOGIN_CREDENTIALS, "");
         return new Gson().fromJson(json, User.class);
+    }
+
+    /**
+     *
+     * @param context
+     * @param pin
+     */
+
+    public static void setPinAuth(Context context, boolean pin) {
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putBoolean(PIN_AUTH_PREF, pin);
+        editor.apply();
+    }
+
+    public static boolean getPinAuth(Context context) {
+        return getPreferences(context).getBoolean(PIN_AUTH_PREF, false);
+    }
+
+    public static void setPinCode(Context context,String value){
+        SharedPreferences.Editor prefsEditor = getPreferences(context).edit();
+        prefsEditor.putString(PIN_CODE, value);
+        prefsEditor.apply();
+    }
+
+    public static String getPinCode(Context context) {
+        return getPreferences(context).getString(PIN_CODE, "");
+    }
+
+    public static void setRetypePinCode(Context context,String value){
+        SharedPreferences.Editor prefsEditor = getPreferences(context).edit();
+        prefsEditor.putString(TEMPORARY_PIN_CODE, value);
+        prefsEditor.apply();
+    }
+
+    public static String getRetypePinCode(Context context) {
+        return getPreferences(context).getString(TEMPORARY_PIN_CODE, "");
     }
 
 

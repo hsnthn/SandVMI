@@ -2,6 +2,8 @@ package com.cybercrypt.sandvmi.ui.util;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,8 +40,13 @@ public class BaseFragment extends Fragment implements OnNavigationIconClick {
             });
     }
 
-    public void changeFragment(Fragment fra){
-        FragmentUtils.replaceFragment(getActivity(), fra, R.id.nav_host_fragment, true, FragmentUtils.TRANSITION_NONE);
+
+    protected void changeFragment(Fragment fragment, String layoutTag){
+        FragmentUtils.replaceFragment(getActivity(), fragment, R.id.nav_host_fragment, true,layoutTag, FragmentUtils.TRANSITION_NONE);
+    }
+
+    protected void clearBackStack(){
+        FragmentUtils.clearFragmentBackStack(getActivity());
     }
 
     @Override
@@ -49,5 +56,10 @@ public class BaseFragment extends Fragment implements OnNavigationIconClick {
         ((BaseActivity) getActivity()).hideKeyboard();
     }
 
+    protected void showKeyboard(EditText view){
+        InputMethodManager inputMethodManager = (InputMethodManager)getActivity(). getSystemService(getActivity().INPUT_METHOD_SERVICE);
+        view.requestFocus();
+        inputMethodManager.showSoftInput(view, 0);
+    }
 
 }

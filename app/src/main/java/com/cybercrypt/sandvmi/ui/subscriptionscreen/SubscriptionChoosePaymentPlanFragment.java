@@ -68,9 +68,9 @@ public class SubscriptionChoosePaymentPlanFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (binding.checkSubscriptipnPaymentMethod1.isChecked()){
-                    changeFragment(SubscriptionCreditCardPaymentFragment.newInstance());
+                    changeFragment(SubscriptionCreditCardPaymentFragment.newInstance(),"SubscriptionCreditCardPaymentFragment");
                 }else{
-                    changeFragment(SubscriptionCryptocurrencyPaymentFragment.newInstance());
+                    changeFragment(SubscriptionCryptocurrencyPaymentFragment.newInstance(),"SubscriptionCryptocurrencyPaymentFragment");
                 }
 
             }

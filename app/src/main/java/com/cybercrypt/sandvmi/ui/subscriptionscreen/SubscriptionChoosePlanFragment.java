@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.FragmentSubscriptionChoosePlanBinding;
 import com.cybercrypt.sandvmi.ui.AuthenticationActivity;
+import com.cybercrypt.sandvmi.ui.SubscriptionScreenActivity;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 
 public class SubscriptionChoosePlanFragment extends BaseFragment {
@@ -67,7 +68,7 @@ public class SubscriptionChoosePlanFragment extends BaseFragment {
         binding.btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(SubscriptionChoosePaymentPlanFragment.newInstance());
+                changeFragment(SubscriptionChoosePaymentPlanFragment.newInstance(), "SubscriptionChoosePaymentPlanFragment");
             }
         });
 
