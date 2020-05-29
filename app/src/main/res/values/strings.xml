@@ -110,7 +110,7 @@
 
     <string name="error_login">The username or password is incorrect.</string>
     <string name="trial">Already have an account? Sign in</string>
-    <string name="pincode_title">Enter Pin Code</string>
+    <string name="pincode_title">Enter your quick access PIN</string>
     <string name="success_signup">You have signed up succesfully.</string>
     <string name="error_internet_connection">No internet connection</string>
     <string name="error_valid_email">Please input a valid email address</string>
@@ -124,6 +124,15 @@
     <string name="error_pass_upper_char">Password must contain 1 uppercase letter</string>
     <string name="error_pass_lower_char">Password must contain 1 lowercase letter</string>
     <string name="error_pass_not_allowed">Please do not use not allowed symbols.</string>
+    <string name="toolbar_pinlock_auth">Welcome Back</string>
+    <string name="pin_btn_txt">Login</string>
+    <string name="pin_forgot_pass">Forgot 4-digit PIN</string>
+    <string name="toolbar_pinlock_create">Set PIN Code</string>
+    <string name="toolbar_pinlock_retype">Confirm PIN Code</string>
+    <string name="pincode_title_create">Please enter a 4-digit PIN</string>
+    <string name="pincode_title_retype">Please re-enter your 4-digit PIN</string>
+    <string name="pin_match_error">This code doesn\'t match the other one</string>
+    <string name="pin_incorrect_error">Incorrent PIN. Try again.</string>
 
     <string-array name="months_array">
         <item>01</item>

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -22,7 +23,9 @@ import com.cybercrypt.sandvmi.api.Resources;
 import com.cybercrypt.sandvmi.api.Status;
 import com.cybercrypt.sandvmi.data.remote.model.User;
 import com.cybercrypt.sandvmi.databinding.FragmentLoginBinding;
+import com.cybercrypt.sandvmi.ui.AuthenticationActivity;
 import com.cybercrypt.sandvmi.ui.MainActivity;
+import com.cybercrypt.sandvmi.ui.authentication.PinLockFragment;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 import com.cybercrypt.sandvmi.ui.util.Utils;
 import com.cybercrypt.sandvmi.util.PrefHelper;
@@ -93,7 +96,7 @@ public class LoginFragment extends BaseFragment {
                     PrefHelper.setSharedUser(getContext(), (User) resources.data);
                     PrefHelper.setLoginCredentials(getActivity(), new User(uname, pass));
 
-                    startHomeActivity();
+                    showPinFragment();
 
                 } else {
                     String message = getResources().getString(R.string.error_login);
@@ -118,9 +121,9 @@ public class LoginFragment extends BaseFragment {
         }
     }
 
-    private void startHomeActivity() {
-        getActivity().finish();
-        startActivity(new Intent(getActivity(), MainActivity.class));
+    private void showPinFragment() {
+        clearBackStack();
+        changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_CREATE), AuthenticationActivity.PINLOCKTAG_CREATE);
     }
 
     private void showMessages(int status, String message) {

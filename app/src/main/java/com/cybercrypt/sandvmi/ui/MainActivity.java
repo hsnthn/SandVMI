@@ -190,7 +190,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 
     public void SignoutClick(View view){
-        PrefHelper.setLoggedIn(getApplicationContext(), false);
         startActivity(new Intent(MainActivity.this,AuthenticationActivity.class));
         finish();
     }

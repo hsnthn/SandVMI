@@ -7,17 +7,16 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.cybercrypt.sandvmi.R;
 import com.cybercrypt.sandvmi.databinding.ActivityAuthenticationBinding;
 import com.cybercrypt.sandvmi.ui.authentication.ForgotPasswordFragment;
+import com.cybercrypt.sandvmi.ui.authentication.PinLockFragment;
 import com.cybercrypt.sandvmi.ui.authentication.login.LoginFragment;
 import com.cybercrypt.sandvmi.ui.authentication.signup.SignupFragment;
 import com.cybercrypt.sandvmi.ui.util.BaseActivity;
-import com.cybercrypt.sandvmi.ui.util.Utils;
+import com.cybercrypt.sandvmi.util.PrefHelper;
 
 public class AuthenticationActivity extends BaseActivity {
 
@@ -25,6 +24,9 @@ public class AuthenticationActivity extends BaseActivity {
     public static final String SIGNUPTAG = "SIGNUP";
     public static final String LOGINTAG = "LOGIN";
     public static final String FORGOTPASSWORDTAG = "FORGOTPASSWORD";
+    public static final String PINLOCKTAG_CREATE = "PINLOCK_CREATE";
+    public static final String PINLOCKTAG_RETYPE = "PINLOCK_RETYPE";
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,22 +36,29 @@ public class AuthenticationActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_authentication);
         bindToolbar(binding.toolbar);
 
-        // pin authentication
+        if (PrefHelper.getPinAuth(getApplicationContext())){
+            changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_AUTH), LOGINTAG);
+        }else {
 
-        Intent intent = getIntent();
-        if (intent.hasExtra("fragment")) {
-            String fragName = intent.getStringExtra("fragment");
-            if (fragName.equals(LOGINTAG)) {
+            Intent intent = getIntent();
+            if (intent.hasExtra("fragment")) {
+                String fragName = intent.getStringExtra("fragment");
+                if (fragName.equals(LOGINTAG)) {
+                    showLoginFragment();
+                } else if (fragName.equals(SIGNUPTAG)) {
+                    showSignUpFragment();
+                }
+            } else {
                 showLoginFragment();
-            } else if (fragName.equals(SIGNUPTAG)) {
-                showSignUpFragment();
             }
-        } else {
-            showLoginFragment();
         }
     }
 
     private void showLoginFragment() {
+        changeFragment(LoginFragment.newInstance(), LOGINTAG);
+    }
+
+    public void ForgotPinClick(View view) {
         changeFragment(LoginFragment.newInstance(), LOGINTAG);
     }
 
@@ -64,13 +73,15 @@ public class AuthenticationActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Utils.hideNavigations(this);
+        //Utils.hideNavigations(this);
     }
 
     @Override
     public void onBackPressed() {
         hideKeyboard();
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        Log.w("fragment count", String.valueOf(fragmentManager.getBackStackEntryCount()));
         if (fragmentManager.getBackStackEntryCount() > 1) {
 
             fragmentManager.popBackStack();
