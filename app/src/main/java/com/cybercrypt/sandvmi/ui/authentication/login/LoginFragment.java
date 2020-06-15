@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -96,7 +95,12 @@ public class LoginFragment extends BaseFragment {
                     PrefHelper.setSharedUser(getContext(), (User) resources.data);
                     PrefHelper.setLoginCredentials(getActivity(), new User(uname, pass));
 
-                    showPinFragment();
+                    if (!PrefHelper.getPinAuth(getContext()))
+                        showPinFragment();
+                    else {
+                        startActivity(new Intent(getActivity(), MainActivity.class));
+                        getActivity().finish();
+                    }
 
                 } else {
                     String message = getResources().getString(R.string.error_login);

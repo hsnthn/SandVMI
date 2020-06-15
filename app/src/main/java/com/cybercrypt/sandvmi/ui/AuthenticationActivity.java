@@ -16,7 +16,6 @@ import com.cybercrypt.sandvmi.ui.authentication.PinLockFragment;
 import com.cybercrypt.sandvmi.ui.authentication.login.LoginFragment;
 import com.cybercrypt.sandvmi.ui.authentication.signup.SignupFragment;
 import com.cybercrypt.sandvmi.ui.util.BaseActivity;
-import com.cybercrypt.sandvmi.util.PrefHelper;
 
 public class AuthenticationActivity extends BaseActivity {
 
@@ -26,6 +25,7 @@ public class AuthenticationActivity extends BaseActivity {
     public static final String FORGOTPASSWORDTAG = "FORGOTPASSWORD";
     public static final String PINLOCKTAG_CREATE = "PINLOCK_CREATE";
     public static final String PINLOCKTAG_RETYPE = "PINLOCK_RETYPE";
+    public static final String PINLOCKTAG = "PINLOCK";
 
 
     @Override
@@ -35,23 +35,25 @@ public class AuthenticationActivity extends BaseActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_authentication);
         bindToolbar(binding.toolbar);
-
+/*
         if (PrefHelper.getPinAuth(getApplicationContext())){
             changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_AUTH), LOGINTAG);
         }else {
-
-            Intent intent = getIntent();
-            if (intent.hasExtra("fragment")) {
-                String fragName = intent.getStringExtra("fragment");
-                if (fragName.equals(LOGINTAG)) {
-                    showLoginFragment();
-                } else if (fragName.equals(SIGNUPTAG)) {
-                    showSignUpFragment();
-                }
-            } else {
+*/
+        Intent intent = getIntent();
+        if (intent.hasExtra("fragment")) {
+            String fragName = intent.getStringExtra("fragment");
+            if (fragName.equals(LOGINTAG)) {
                 showLoginFragment();
+            } else if (fragName.equals(SIGNUPTAG)) {
+                showSignUpFragment();
+            } else if (fragName.equals(PINLOCKTAG)) {
+                changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_AUTH), LOGINTAG);
             }
+        } else {
+            showLoginFragment();
         }
+        // }
     }
 
     private void showLoginFragment() {
@@ -94,6 +96,4 @@ public class AuthenticationActivity extends BaseActivity {
     public void SignupClick(View view) {
         showSignUpFragment();
     }
-
-
 }

@@ -117,7 +117,7 @@ public class PinLockFragment extends BaseFragment {
                     } else {
                         if (str.toString().equals(PrefHelper.getPinCode(getContext()))) {
                             hideKeyboard();
-                            startHomeActivity();
+                            getActivity().finish();
                         } else {
                             binding.txtPinEntry.setText("");
                             binding.txtPinMatchError.setText(getResources().getText(R.string.pin_incorrect_error));
