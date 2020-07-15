@@ -62,10 +62,10 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setDummys(){
-        dummytitle1="Demo";
-        url1="http://185.165.169.244:8081/guacamole";
-        url2="http://172.17.0.4:8080/guacamole";
-        dummytitle2="Caner Local";
+        dummytitle1="vmi-1";
+        url1="http://194.62.191.45:8081/guacamole/#/client/MQBjAG15c3Fs/?username=guacadmin&password=guacadmin";
+        url2="http://185.165.169.244:8081/guacamole/#/client/MQBjAG15c3Fs/?username=guacadmin&password=guacadmin";
+        dummytitle2="vmi-2";
         lv1="Last visit: 14/02/20 at 15:46";
         lv2="Last visit: 10/01/20 at 09:35";
     }
