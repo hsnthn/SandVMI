@@ -4,11 +4,13 @@ public class VMListItem {
 
     private String vmName;
     private String lastVisited;
+    private String vmUrl;
     private int imResID;
 
-    public VMListItem(String vmName, String lastVisited, int imResID) {
+    public VMListItem(String vmName, String lastVisited, String vmUrl, int imResID) {
         this.vmName = vmName;
         this.lastVisited = lastVisited;
+        this.vmUrl = vmUrl;
         this.imResID = imResID;
     }
 
@@ -34,5 +36,13 @@ public class VMListItem {
 
     public void setImResID(int imResID) {
         this.imResID = imResID;
+    }
+
+    public String getVmUrl() {
+        return vmUrl;
+    }
+
+    public void setVmUrl(String vmUrl) {
+        this.vmUrl = vmUrl;
     }
 }
