@@ -18,6 +18,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.alimuzaffar.lib.pin.PinEntryEditText;
 import com.cybercrypt.sandvmi.R;
+import com.cybercrypt.sandvmi.SandVMIApp;
 import com.cybercrypt.sandvmi.databinding.FragmentPinCodeBinding;
 import com.cybercrypt.sandvmi.ui.AuthenticationActivity;
 import com.cybercrypt.sandvmi.ui.MainActivity;
@@ -30,7 +31,7 @@ public class PinLockFragment extends BaseFragment {
     private PinStatus pinStatus;
 
     public enum PinStatus {
-        MODE_CREATE, MODE_RETYPE, MODE_AUTH, MODE_INIT
+        MODE_CREATE, MODE_RETYPE, MODE_AUTH, MODE_LOGIN
     }
 
     public static PinLockFragment newInstance(PinStatus status) {
@@ -103,12 +104,17 @@ public class PinLockFragment extends BaseFragment {
                         PrefHelper.setRetypePinCode(getContext(), str.toString());
                         binding.txtPinEntry.setText("");
                         changeFragment(PinLockFragment.newInstance(PinStatus.MODE_RETYPE), AuthenticationActivity.PINLOCKTAG_RETYPE);
-                    } else if (pinStatus == PinStatus.MODE_RETYPE  || pinStatus == PinStatus.MODE_INIT) {
+                    } else if (pinStatus == PinStatus.MODE_RETYPE ) {
 
                         if (PrefHelper.getRetypePinCode(getContext()).equals(str.toString())) {
                             PrefHelper.setPinAuth(getContext(), true);
                             PrefHelper.setPinCode(getContext(), str.toString());
-                            startHomeActivity();
+
+                            if (((SandVMIApp) getActivity().getApplication()).resumeActivity != null )
+                                getActivity().finish();
+                            else
+                                startHomeActivity();
+
                         } else {
                             binding.txtPinEntry.setText("");
                             binding.txtPinMatchError.setText(getResources().getText(R.string.pin_match_error));
@@ -117,7 +123,12 @@ public class PinLockFragment extends BaseFragment {
                     } else {
                         if (str.toString().equals(PrefHelper.getPinCode(getContext()))) {
                             hideKeyboard();
-                            getActivity().finish();
+
+                            if (pinStatus == PinStatus.MODE_LOGIN)
+                                startHomeActivity();
+                            else if(pinStatus == PinStatus.MODE_AUTH)
+                                getActivity().finish();
+
                         } else {
                             binding.txtPinEntry.setText("");
                             binding.txtPinMatchError.setText(getResources().getText(R.string.pin_incorrect_error));
@@ -126,6 +137,8 @@ public class PinLockFragment extends BaseFragment {
                             if (binding.txtPinForgot.getVisibility() != View.VISIBLE)
                                 binding.txtPinForgot.setVisibility(View.VISIBLE);
                         }
+
+
                     }
 
                 }

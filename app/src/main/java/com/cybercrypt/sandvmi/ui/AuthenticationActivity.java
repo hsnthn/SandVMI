@@ -10,12 +10,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 
 import com.cybercrypt.sandvmi.R;
+import com.cybercrypt.sandvmi.SandVMIApp;
 import com.cybercrypt.sandvmi.databinding.ActivityAuthenticationBinding;
 import com.cybercrypt.sandvmi.ui.authentication.ForgotPasswordFragment;
 import com.cybercrypt.sandvmi.ui.authentication.PinLockFragment;
 import com.cybercrypt.sandvmi.ui.authentication.login.LoginFragment;
 import com.cybercrypt.sandvmi.ui.authentication.signup.SignupFragment;
 import com.cybercrypt.sandvmi.ui.util.BaseActivity;
+import com.cybercrypt.sandvmi.ui.util.FragmentUtils;
 
 public class AuthenticationActivity extends BaseActivity {
 
@@ -25,7 +27,7 @@ public class AuthenticationActivity extends BaseActivity {
     public static final String FORGOTPASSWORDTAG = "FORGOTPASSWORD";
     public static final String PINLOCKTAG_CREATE = "PINLOCK_CREATE";
     public static final String PINLOCKTAG_RETYPE = "PINLOCK_RETYPE";
-    public static final String PINLOCKTAG = "PINLOCK";
+    public static final String PINLOCKTAG = "PinLockFragment";
 
 
     @Override
@@ -48,7 +50,7 @@ public class AuthenticationActivity extends BaseActivity {
             } else if (fragName.equals(SIGNUPTAG)) {
                 showSignUpFragment();
             } else if (fragName.equals(PINLOCKTAG)) {
-                changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_AUTH), LOGINTAG);
+                changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_AUTH), PINLOCKTAG);
             }
         } else {
             showLoginFragment();
@@ -61,7 +63,8 @@ public class AuthenticationActivity extends BaseActivity {
     }
 
     public void ForgotPinClick(View view) {
-        changeFragment(LoginFragment.newInstance(), LOGINTAG);
+        FragmentUtils.clearFragmentBackStack(this);
+        changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_CREATE), AuthenticationActivity.PINLOCKTAG_CREATE);
     }
 
     private void showSignUpFragment() {
@@ -85,11 +88,14 @@ public class AuthenticationActivity extends BaseActivity {
 
         Log.w("fragment count", String.valueOf(fragmentManager.getBackStackEntryCount()));
         if (fragmentManager.getBackStackEntryCount() > 1) {
-
             fragmentManager.popBackStack();
-
         } else {
             finish();
+            if (getSupportFragmentManager().findFragmentByTag(AuthenticationActivity.PINLOCKTAG) instanceof PinLockFragment ){
+                ((SandVMIApp) this.getApplication()).resumeActivity.finish();
+                ((SandVMIApp) this.getApplication()).resumeActivity=null;
+
+            }
         }
     }
 

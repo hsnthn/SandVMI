@@ -40,7 +40,7 @@ public class HomeFragment extends BaseFragment {
         setDummys();
         dataList = new ArrayList<VMListItem>();
         dataList.add(new VMListItem(dummytitle1, lv1,url1,R.drawable.ic_screen_lock));
-        dataList.add(new VMListItem(dummytitle2, lv1,url2,R.drawable.ic_screen_lock));
+        //dataList.add(new VMListItem(dummytitle2, lv1,url2,R.drawable.ic_screen_lock));
 
         final CustomHomeVMListAdapter cAdapter=new CustomHomeVMListAdapter(
                 getActivity(),
@@ -62,10 +62,12 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setDummys(){
+
         dummytitle1="vmi-1";
         url1="http://194.62.191.45:8081/guacamole/#/client/MQBjAG15c3Fs/?username=guacadmin&password=guacadmin";
         url2="http://185.165.169.244:8081/guacamole/#/client/MQBjAG15c3Fs/?username=guacadmin&password=guacadmin";
         dummytitle2="vmi-2";
+
         lv1="Last visit: 14/02/20 at 15:46";
         lv2="Last visit: 10/01/20 at 09:35";
     }

@@ -1,6 +1,5 @@
 package com.cybercrypt.sandvmi.ui.authentication.login;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,7 +22,6 @@ import com.cybercrypt.sandvmi.api.Status;
 import com.cybercrypt.sandvmi.data.remote.model.User;
 import com.cybercrypt.sandvmi.databinding.FragmentLoginBinding;
 import com.cybercrypt.sandvmi.ui.AuthenticationActivity;
-import com.cybercrypt.sandvmi.ui.MainActivity;
 import com.cybercrypt.sandvmi.ui.authentication.PinLockFragment;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 import com.cybercrypt.sandvmi.ui.util.Utils;
@@ -98,9 +96,9 @@ public class LoginFragment extends BaseFragment {
                     PrefHelper.setLoginCredentials(getActivity(), new User(uname, pass));
 
                     if (!PrefHelper.getPinAuth(getContext()))
-                        showPinFragment();
+                        showPinFragmentForPinSet();
                     else {
-                        changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_INIT), LOGINTAG);
+                        changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_LOGIN), LOGINTAG);
                     }
 
                 } else {
@@ -126,7 +124,7 @@ public class LoginFragment extends BaseFragment {
         }
     }
 
-    private void showPinFragment() {
+    private void showPinFragmentForPinSet() {
         clearBackStack();
         changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_CREATE), AuthenticationActivity.PINLOCKTAG_CREATE);
     }

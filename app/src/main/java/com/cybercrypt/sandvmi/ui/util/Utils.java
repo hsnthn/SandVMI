@@ -1,6 +1,7 @@
 package com.cybercrypt.sandvmi.ui.util;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
@@ -18,6 +19,8 @@ import androidx.core.view.ViewCompat;
 
 import com.cybercrypt.sandvmi.R;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 public class Utils {
 
@@ -90,6 +93,18 @@ public class Utils {
        // View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
     }
 
+
+    public static void hideTopNavigations(Activity context) {
+        View decorView = context.getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                );
+    }
+
     public static class DialogColor{
         public final static int ERROR=0;
         public final static int SUCCESS=1;
@@ -111,7 +126,6 @@ public class Utils {
 
         return false;
     }
-
 
 
 }
