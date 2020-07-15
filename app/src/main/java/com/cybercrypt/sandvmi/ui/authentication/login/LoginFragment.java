@@ -29,6 +29,8 @@ import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 import com.cybercrypt.sandvmi.ui.util.Utils;
 import com.cybercrypt.sandvmi.util.PrefHelper;
 
+import static com.cybercrypt.sandvmi.ui.AuthenticationActivity.LOGINTAG;
+
 public class LoginFragment extends BaseFragment {
 
     private FragmentLoginBinding binding;
@@ -98,8 +100,7 @@ public class LoginFragment extends BaseFragment {
                     if (!PrefHelper.getPinAuth(getContext()))
                         showPinFragment();
                     else {
-                        startActivity(new Intent(getActivity(), MainActivity.class));
-                        getActivity().finish();
+                        changeFragment(PinLockFragment.newInstance(PinLockFragment.PinStatus.MODE_INIT), LOGINTAG);
                     }
 
                 } else {

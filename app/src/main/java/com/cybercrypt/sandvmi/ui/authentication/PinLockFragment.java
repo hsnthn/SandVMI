@@ -30,7 +30,7 @@ public class PinLockFragment extends BaseFragment {
     private PinStatus pinStatus;
 
     public enum PinStatus {
-        MODE_CREATE, MODE_RETYPE, MODE_AUTH
+        MODE_CREATE, MODE_RETYPE, MODE_AUTH, MODE_INIT
     }
 
     public static PinLockFragment newInstance(PinStatus status) {
@@ -103,7 +103,7 @@ public class PinLockFragment extends BaseFragment {
                         PrefHelper.setRetypePinCode(getContext(), str.toString());
                         binding.txtPinEntry.setText("");
                         changeFragment(PinLockFragment.newInstance(PinStatus.MODE_RETYPE), AuthenticationActivity.PINLOCKTAG_RETYPE);
-                    } else if (pinStatus == PinStatus.MODE_RETYPE) {
+                    } else if (pinStatus == PinStatus.MODE_RETYPE  || pinStatus == PinStatus.MODE_INIT) {
 
                         if (PrefHelper.getRetypePinCode(getContext()).equals(str.toString())) {
                             PrefHelper.setPinAuth(getContext(), true);
