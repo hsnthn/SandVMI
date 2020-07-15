@@ -38,5 +38,4 @@ public class SandVMIApp extends Application implements LifecycleObserver {
                 startActivity(intent);
             }
     }
-
 }
