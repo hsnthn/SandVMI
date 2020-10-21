@@ -1,1 +1,3 @@
 /build
+!/build/generated/ap_generated_sources/debug/out/
+!/build/generated/source/buildConfig/debug/

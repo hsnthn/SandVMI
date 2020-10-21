@@ -1,5 +1,6 @@
 package com.cybercrypt.sandvmi.ui.authentication.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,6 +27,8 @@ import com.cybercrypt.sandvmi.ui.authentication.PinLockFragment;
 import com.cybercrypt.sandvmi.ui.util.BaseFragment;
 import com.cybercrypt.sandvmi.ui.util.Utils;
 import com.cybercrypt.sandvmi.util.PrefHelper;
+import com.sierra.swclient.ConnectionActivity;
+import com.sierra.swclient.Constants;
 
 import static com.cybercrypt.sandvmi.ui.AuthenticationActivity.LOGINTAG;
 
@@ -76,12 +79,21 @@ public class LoginFragment extends BaseFragment {
 
                 uname = binding.editLoUname.getText().toString();
                 pass = binding.editLoPass.getText().toString();
-                if (Utils.isNetworkConnected(getContext()))
-                    loginViewModel.getUser(uname, pass);
-                else {
-                    hideKeyboard();
-                    Utils.showSnackbar(getActivity(), binding.layLogin, Utils.DialogColor.ERROR, getResources().getString(R.string.error_internet_connection));
-                }
+
+                Intent intent = new Intent(requireActivity(), ConnectionActivity.class);
+                intent.putExtra(Constants.HOSTNAME, "88.119.23.19");
+                intent.putExtra(Constants.PORTNO, 443);
+                intent.putExtra(Constants.USERNAME, uname);
+                intent.putExtra(Constants.PASSWORD, pass);
+                intent.putExtra(Constants.GROUP, "local");
+                startActivity(intent);
+
+//                if (Utils.isNetworkConnected(getContext()))
+//                    loginViewModel.getUser(uname, pass);
+//                else {
+//                    hideKeyboard();
+//                    Utils.showSnackbar(getActivity(), binding.layLogin, Utils.DialogColor.ERROR, getResources().getString(R.string.error_internet_connection));
+//                }
             }
         });
 
