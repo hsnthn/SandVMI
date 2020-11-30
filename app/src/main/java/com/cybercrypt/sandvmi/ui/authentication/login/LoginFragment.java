@@ -86,6 +86,23 @@ public class LoginFragment extends BaseFragment {
                 intent.putExtra(Constants.USERNAME, uname);
                 intent.putExtra(Constants.PASSWORD, pass);
                 intent.putExtra(Constants.GROUP, "local");
+                intent.putExtra(Constants.KEY_SYN_WALLPAPER, false);
+                intent.putExtra(Constants.SOFT_HOME, true);
+                intent.putExtra(Constants.ENCODE_TYPE, 6);
+                intent.putExtra(Constants.KEY_CODEC_TYPE, 2);
+                intent.putExtra(Constants.KEY_DTLS_ENABLE, false);
+                intent.putExtra(Constants.KEY_DTLS_TOUCH_ENABLE, false);
+                intent.putExtra(Constants.UDP_HOLE_PUNCH, false);
+                intent.putExtra(Constants.KEY_SSL_ENABLE, true);
+                intent.putExtra(Constants.KEY_SSLPINNING_ENABLE, false);
+                intent.putExtra(Constants.SCALE_TYPE, 0);
+                intent.putExtra(Constants.FORCE_BANDWIDTH, 0);
+                intent.putExtra(Constants.BIT_RATE, 2);
+                intent.putExtra(Constants.NOTIFICATION, true);
+                intent.putExtra(Constants.KEY_CAM, true);
+                intent.putExtra(Constants.CAM_BIT_RATE, 1.0);
+                intent.putExtra(Constants.KEY_CAM_ENCODE_TYPE, 1);
+                intent.putExtra(Constants.KEY_CAM_CODEC_TYPE, 1);
                 startActivity(intent);
 
 //                if (Utils.isNetworkConnected(getContext()))
